@@ -8,6 +8,7 @@ import "TextTypes"
 
 Item {
     id: root
+    objectName: "TextFieldWithHeaderType"
 
     property string headerText
     property string headerTextDisabledColor: AmneziaStyle.color.greyDisabled

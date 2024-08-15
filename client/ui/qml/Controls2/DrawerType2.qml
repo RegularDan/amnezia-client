@@ -8,6 +8,7 @@ import "TextTypes"
 
 Item {
     id: root
+    objectName: "DrawerType2"
 
     readonly property string drawerExpanded: "expanded"
     readonly property string drawerCollapsed: "collapsed"

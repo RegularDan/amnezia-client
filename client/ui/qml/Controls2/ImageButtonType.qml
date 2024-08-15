@@ -6,6 +6,7 @@ import Style 1.0
 
 Button {
     id: root
+    objectName: "ImageButtonType"
 
     property string image
 

@@ -8,6 +8,7 @@ import "TextTypes"
 
 RadioButton {
     id: root
+    objectName: "HorizontalRadioButton"
 
     property string hoveredColor: AmneziaStyle.color.blackHovered
     property string defaultColor: AmneziaStyle.color.transparent

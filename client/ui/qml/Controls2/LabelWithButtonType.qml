@@ -8,6 +8,7 @@ import "TextTypes"
 
 Item {
     id: root
+    objectName: "LaberWithButtonType"
 
     property string text
     property int textMaximumLineCount: 2

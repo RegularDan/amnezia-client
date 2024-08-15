@@ -2,6 +2,8 @@ import QtQuick
 import Style 1.0
 
 Text {
+    objectName: "ParagraphTextType"
+
     lineHeight: 24 + LanguageModel.getLineHeightAppend()
     lineHeightMode: Text.FixedHeight
 

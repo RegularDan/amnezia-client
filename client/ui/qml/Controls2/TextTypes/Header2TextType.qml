@@ -3,6 +3,8 @@ import QtQuick
 import Style 1.0
 
 Text {
+    objectName: "Header2TextType"
+
     lineHeight: 30 + LanguageModel.getLineHeightAppend()
     lineHeightMode: Text.FixedHeight
 

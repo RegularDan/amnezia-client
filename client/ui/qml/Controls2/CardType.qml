@@ -6,6 +6,7 @@ import Style 1.0
 
 RadioButton {
     id: root
+    objectName: "CardType"
 
     property string headerText
     property string bodyText

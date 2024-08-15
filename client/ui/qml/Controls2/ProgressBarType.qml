@@ -6,6 +6,7 @@ import Style 1.0
 
 ProgressBar {
     id: root
+    objectName: "ProgressBarType"
 
     implicitHeight: 4
 

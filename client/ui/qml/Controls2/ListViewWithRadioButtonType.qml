@@ -8,6 +8,7 @@ import "TextTypes"
 
 ListView {
     id: root
+    objectName: "ListViewWithRadioButtonType"
 
     property var rootWidth
 

@@ -9,6 +9,7 @@ import "TextTypes"
 
 RadioButton {
     id: root
+    objectName: "VerticalRadioButton"
 
     property int textMaximumLineCount: 2
     property int textElide: Qt.ElideRight

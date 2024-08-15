@@ -5,6 +5,7 @@ import Style 1.0
 
 TabButton {
     id: root
+    objectName: "TabButtonType"
 
     property string hoveredColor: AmneziaStyle.color.brown
     property string defaultColor: AmneziaStyle.color.greyDark

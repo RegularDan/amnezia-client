@@ -6,6 +6,7 @@ import "TextTypes"
 
 ListView {
     id: menuContent
+    objectName: "ListViewWithLabelsType"
 
     property var rootWidth
 

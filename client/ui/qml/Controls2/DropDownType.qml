@@ -9,6 +9,7 @@ import "../Config"
 
 Item {
     id: root
+    objectName: "DropDownType"
 
     property string text
     property string textColor: AmneziaStyle.color.white

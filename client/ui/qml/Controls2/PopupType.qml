@@ -8,6 +8,7 @@ import "TextTypes"
 
 Popup {
     id: root
+    objectName: "PopupType"
 
     property string text
     property bool closeButtonVisible: true

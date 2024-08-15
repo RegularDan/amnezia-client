@@ -3,6 +3,8 @@ import QtQuick.Controls
 import Qt.labs.platform
 
 Menu {
+    objectName: "ContextMenuType"
+
     property var textObj
 
     MenuItem {

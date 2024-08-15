@@ -3,6 +3,8 @@ import QtQuick
 import Style 1.0
 
 Text {
+    objectName: "CaptionTextType"
+
     lineHeight: 16 + LanguageModel.getLineHeightAppend()
     lineHeightMode: Text.FixedHeight
 

@@ -9,6 +9,7 @@ import "TextTypes"
 
 CheckBox {
     id: root
+    objectName: "CheckBoxType"
 
     property string descriptionText
     property string descriptionTextColor: AmneziaStyle.color.grey

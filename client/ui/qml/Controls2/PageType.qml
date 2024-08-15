@@ -6,6 +6,7 @@ import "../Config"
 
 Item {
     id: root
+    objectName: "PageType"
 
     property StackView stackView: StackView.view
 
@@ -15,6 +16,25 @@ Item {
         if (visible && !GC.isMobile()) {
             timer.start()
         }
+    }
+
+    Component.onCompleted: {
+        console.log(">>>>>>>>>>>>>");
+        console.log("==> root: ", root);
+        for (let i = 0; i < root.children.length; i++) {
+            let child = root.children[i];
+            console.log("\t|-[", i, "]:", child);
+            root.
+            for (let j = 0; j < child.children.length; j++) {
+                let grandchild = child.children[j];
+                console.log("\t\t|-[", j, "]:", grandchild.type);
+            }
+        }
+        // console.log("===>> children: ", root.children);
+        // for (let i = 0; i < root.children.length; i++) {
+        //     console.log("***>> child's [", i, "] children: ", root.children[i].children);
+        // }
+        console.log("<<<<<<<<<<<<<");
     }
 
     function lastItemTabClicked(focusItem) {

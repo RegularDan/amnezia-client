@@ -7,6 +7,7 @@ import "TextTypes"
 
 Item {
     id: root
+    objectName: "HeaderType"
 
     property string actionButtonImage
     property var actionButtonFunction

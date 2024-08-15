@@ -5,6 +5,7 @@ import Style 1.0
 
 Rectangle {
     id: root
+    objectName: "TextAreaType"
 
     property string placeholderText
     property string text

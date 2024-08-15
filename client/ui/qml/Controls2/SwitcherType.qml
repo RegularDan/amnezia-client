@@ -8,6 +8,7 @@ import "TextTypes"
 
 Switch {
     id: root
+    objectName: "SwitcherType"
 
     property alias descriptionText: description.text
     property string descriptionTextColor: AmneziaStyle.color.grey

@@ -4,6 +4,7 @@ import "../Config"
 
 Flickable {
     id: fl
+    objectName: "FlickableType"
 
     function ensureVisible(item) {
         if (item.y < fl.contentY) {

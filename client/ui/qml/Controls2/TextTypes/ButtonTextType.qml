@@ -3,6 +3,8 @@ import QtQuick
 import Style 1.0
 
 Text {
+    objectName: "ButtonTextType"
+
     lineHeight: 24
     lineHeightMode: Text.FixedHeight
 

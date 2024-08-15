@@ -3,6 +3,8 @@ import QtQuick
 import Style 1.0
 
 Text {
+    objectName: "ListItemTitleType"
+
     lineHeight: 21.6 + LanguageModel.getLineHeightAppend()
     lineHeightMode: Text.FixedHeight
 

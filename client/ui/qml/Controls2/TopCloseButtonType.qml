@@ -4,6 +4,7 @@ import QtQuick.Shapes
 
 Popup {
     id: root
+    objectName: "TopCloseButtonType"
 
     property alias buttonWidth: button.implicitWidth
 

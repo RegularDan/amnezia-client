@@ -4,6 +4,8 @@ import QtQuick.Layouts
 import Style 1.0
 
 Rectangle {
+    objectName: "DividerType"
+
     Layout.fillWidth: true
 
     Layout.leftMargin: 16

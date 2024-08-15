@@ -9,6 +9,7 @@ import "TextTypes"
 
 Rectangle {
     id: root
+    objectName: "WarningType"
 
     property string textColor: AmneziaStyle.color.white
     property string backGroundColor: AmneziaStyle.color.blackLight
