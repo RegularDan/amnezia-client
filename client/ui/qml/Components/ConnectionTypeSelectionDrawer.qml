@@ -10,6 +10,7 @@ import "../Config"
 
 DrawerType2 {
     id: root
+    objectName: "ConnectionTypeSelectionDrawer"
 
     width: parent.width
     height: parent.height

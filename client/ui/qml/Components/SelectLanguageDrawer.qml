@@ -13,6 +13,7 @@ DrawerType2 {
 
     expandedContent: Item {
         id: container
+        objectName: "SelectLanguageDrawer"
 
         implicitHeight: root.height * 0.9
 

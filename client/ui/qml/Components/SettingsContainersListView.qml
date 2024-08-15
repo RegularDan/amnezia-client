@@ -15,6 +15,7 @@ import "../Controls2/TextTypes"
 
 ListView {
     id: root
+    objectName: "SettingsContainersListView"
 
     width: parent.width
     height: root.contentItem.height

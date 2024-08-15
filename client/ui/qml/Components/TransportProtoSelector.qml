@@ -9,6 +9,7 @@ import "../Controls2/TextTypes"
 
 Rectangle {
     id: root
+    objectName: "TransportProtoSelector"
 
     property real rootWidth: root.width
     property int currentIndex

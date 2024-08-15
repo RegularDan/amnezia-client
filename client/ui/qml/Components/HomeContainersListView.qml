@@ -13,6 +13,7 @@ import "../Controls2/TextTypes"
 
 ListView {
     id: menuContent
+    objectName: "HomeContainersListView"
 
     property var rootWidth
     property var selectedText

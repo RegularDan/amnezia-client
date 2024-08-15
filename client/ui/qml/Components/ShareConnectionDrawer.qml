@@ -19,6 +19,7 @@ import "../Components"
 
 DrawerType2 {
     id: root
+    objectName: "ShareConnectionDrawer"
 
     property string headerText
     property string configContentHeaderText

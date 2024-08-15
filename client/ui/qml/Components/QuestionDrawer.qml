@@ -11,6 +11,7 @@ import "../Config"
 
 DrawerType2 {
     id: root
+    objectName: "QuestionDrawer"
 
     property string headerText
     property string descriptionText

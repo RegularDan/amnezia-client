@@ -12,6 +12,7 @@ import Style 1.0
 
 DrawerType2 {
     id: root
+    objectName: "InstalledAppsDrawer"
 
     anchors.fill: parent
     expandedHeight: parent.height * 0.9

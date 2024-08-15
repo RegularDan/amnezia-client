@@ -10,6 +10,7 @@ import "../Config"
 
 DrawerType2 {
     id: root
+    objectName: "HomeSplitTunnelingDrawer"
 
     property bool isAppSplitTinnelingEnabled: Qt.platform.os === "windows" || Qt.platform.os === "android"
 
