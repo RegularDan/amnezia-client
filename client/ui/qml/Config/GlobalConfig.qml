@@ -2,6 +2,8 @@ pragma Singleton
 import QtQuick
 
 Item {
+    objectName: "GlobalConfig"
+
     readonly property string screenHome: "qrc:/ScreenHome.qml"
     readonly property string screenHomeIntroGifEx1: "qrc:/ScreenHomeIntroGifEx1.qml"
 
