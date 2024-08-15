@@ -7,6 +7,8 @@ import SortFilterProxyModel 0.2
 import ProtocolEnum 1.0
 
 Item {
+    objectName: "ContainersModelFilters"
+
     ValueFilter {
         id: vpnTypeFilter
         roleName: "serviceType"
