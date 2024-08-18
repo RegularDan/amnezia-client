@@ -17,8 +17,8 @@ PageType {
         target: ImportController
 
         function onQrDecodingFinished() {
-            PageController.closePage()
-            PageController.goToPage(PageEnum.PageSetupWizardViewConfig)
+            PageController.closePageRequired()
+            PageController.goToPageRequired(PageEnum.PageSetupWizardViewConfig)
         }
     }
 
@@ -86,7 +86,7 @@ PageType {
                     var fileName = SystemController.getFileName(qsTr("Open config file"), nameFilter)
                     if (fileName !== "") {
                         if (ImportController.extractConfigFromFile(fileName)) {
-                            PageController.goToPage(PageEnum.PageSetupWizardViewConfig)
+                            PageController.goToPageRequired(PageEnum.PageSetupWizardViewConfig)
                         }
                     }
                 }
@@ -108,7 +108,7 @@ PageType {
                 clickedFunction: function() {
                     ImportController.startDecodingQr()
                     if (Qt.platform.os === "ios") {
-                        PageController.goToPage(PageEnum.PageSetupWizardQrReader)
+                        PageController.goToPageRequired(PageEnum.PageSetupWizardQrReader)
                     }
                 }
             }
@@ -128,7 +128,7 @@ PageType {
                 Keys.onTabPressed: lastItemTabClicked(focusItem)
 
                 clickedFunction: function() {
-                    PageController.goToPage(PageEnum.PageSetupWizardTextKey)
+                    PageController.goToPageRequired(PageEnum.PageSetupWizardTextKey)
                 }
             }
 

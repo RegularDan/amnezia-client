@@ -169,12 +169,12 @@ PageType {
                 clickedFunc: function() {
                     if (root.isEasySetup) {
                         ContainersModel.setProcessedContainerIndex(containers.dockerContainer)
-                        PageController.goToPage(PageEnum.PageSetupWizardInstalling)
+                        PageController.goToPageRequired(PageEnum.PageSetupWizardInstalling)
                         InstallController.install(containers.dockerContainer,
                                                   containers.containerDefaultPort,
                                                   containers.containerDefaultTransportProto)
                     } else {
-                        PageController.goToPage(PageEnum.PageSetupWizardProtocols)
+                        PageController.goToPageRequired(PageEnum.PageSetupWizardProtocols)
                     }
                 }
             }
@@ -208,7 +208,7 @@ PageType {
                 text: qsTr("Skip setup")
 
                 clickedFunc: function() {
-                    PageController.goToPage(PageEnum.PageSetupWizardInstalling)
+                    PageController.goToPageRequired(PageEnum.PageSetupWizardInstalling)
                     InstallController.addEmptyServer()
                 }
             }

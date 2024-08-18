@@ -25,7 +25,7 @@ Button {
         target: ConnectionController
 
         function onPreparingConfig() {
-            PageController.showNotificationMessage(qsTr("Unable to disconnect during configuration preparation"))
+            PageController.showNotificationMessageRequired(qsTr("Unable to disconnect during configuration preparation"))
         }
     }
 

@@ -41,7 +41,7 @@ PageController::PageController(const QSharedPointer<ServersModel> &serversModel,
     connect(this, &PageController::hideMainWindow, []() { setDockIconVisible(false); });
 #endif
 
-    connect(this, qOverload<ErrorCode>(&PageController::showErrorMessage), this, &PageController::onShowErrorMessage);
+    connect(this, qOverload<ErrorCode>(&PageController::showErrorMessageRequired), this, &PageController::onShowErrorMessageRequired);
     
     m_isTriggeredByConnectButton = false;
 }
@@ -74,7 +74,7 @@ void PageController::closeWindow()
     if (m_serversModel->getServersCount() == 0) {
         qApp->quit();
     } else {
-        emit hideMainWindow();
+        emit hideMainWindowRequired();
     }
 #endif
 }
@@ -129,10 +129,10 @@ void PageController::updateNavigationBarColor(const int color)
 void PageController::showOnStartup()
 {
     if (!m_settings->isStartMinimized()) {
-        emit raiseMainWindow();
+        emit raiseMainWindowRequired();
     } else {
 #ifdef Q_OS_WIN
-        emit hideMainWindow();
+        emit hideMainWindowRequired();
 #elif defined Q_OS_MACX
         setDockIconVisible(false);
 #endif
@@ -166,12 +166,12 @@ int PageController::getDrawerDepth()
     return m_drawerDepth;
 }
 
-void PageController::onShowErrorMessage(ErrorCode errorCode)
+void PageController::onShowErrorMessageRequired(ErrorCode errorCode)
 {
     const auto fullErrorMessage = errorString(errorCode);
     const auto errorMessage = fullErrorMessage.mid(fullErrorMessage.indexOf(". ") + 1); // remove ErrorCode %1.
     const auto errorUrl = QStringLiteral("https://docs.amnezia.org/troubleshooting/error-codes/#error-%1-%2").arg(static_cast<int>(errorCode)).arg(utils::enumToString(errorCode).toLower());
     const auto fullMessage = QStringLiteral("<a href=\"%1\" style=\"color: #FBB26A;\">ErrorCode: %2</a>. %3").arg(errorUrl).arg(static_cast<int>(errorCode)).arg(errorMessage);
 
-    emit showErrorMessage(fullMessage);
+    emit showErrorMessageRequired(fullMessage);
 }

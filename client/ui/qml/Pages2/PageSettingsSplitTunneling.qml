@@ -34,10 +34,10 @@ PageType {
 
     Component.onCompleted: {
         if (ConnectionController.isConnected) {
-            PageController.showNotificationMessage(qsTr("Cannot change split tunneling settings during active connection"))
+            PageController.showNotificationMessageRequired(qsTr("Cannot change split tunneling settings during active connection"))
             root.pageEnabled = false
         } else if (ServersModel.isDefaultServerDefaultContainerHasSplitTunneling && isServerFromApi) {
-            PageController.showNotificationMessage(qsTr("Default server does not support split tunneling function"))
+            PageController.showNotificationMessageRequired(qsTr("Default server does not support split tunneling function"))
             root.pageEnabled = false
         } else {
             root.pageEnabled = true
@@ -48,11 +48,11 @@ PageType {
         target: SitesController
 
         function onFinished(message) {
-            PageController.showNotificationMessage(message)
+            PageController.showNotificationMessageRequired(message)
         }
 
         function onErrorOccurred(errorMessage) {
-            PageController.showErrorMessage(errorMessage)
+            PageController.showErrorMessageRequired(errorMessage)
         }
     }
 
@@ -328,10 +328,10 @@ PageType {
             KeyNavigation.tab: GC.isMobile() ? focusItem : addSiteButtonImage
 
             clickedFunc: function() {
-                PageController.showBusyIndicator(true)
+                PageController.showBusyIndicatorRequired(true)
                 SitesController.addSite(textFieldText)
                 textFieldText = ""
-                PageController.showBusyIndicator(false)
+                PageController.showBusyIndicatorRequired(false)
             }
         }
 
@@ -434,10 +434,10 @@ PageType {
                                                                 ".json")
                     }
                     if (fileName !== "") {
-                        PageController.showBusyIndicator(true)
+                        PageController.showBusyIndicatorRequired(true)
                         SitesController.exportSites(fileName)
                         moreActionsDrawer.close()
-                        PageController.showBusyIndicator(false)
+                        PageController.showBusyIndicatorRequired(false)
                     }
                 }
             }
@@ -545,9 +545,9 @@ PageType {
                     }
 
                     function importSites(fileName, replaceExistingSites) {
-                        PageController.showBusyIndicator(true)
+                        PageController.showBusyIndicatorRequired(true)
                         SitesController.importSites(fileName, replaceExistingSites)
-                        PageController.showBusyIndicator(false)
+                        PageController.showBusyIndicatorRequired(false)
                         importSitesDrawer.close()
                         moreActionsDrawer.close()
                     }

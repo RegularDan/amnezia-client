@@ -27,7 +27,7 @@ PageType {
 
     Component.onCompleted: {
         if (ConnectionController.isConnected) {
-            PageController.showNotificationMessage(qsTr("Cannot change split tunneling settings during active connection"))
+            PageController.showNotificationMessageRequired(qsTr("Cannot change split tunneling settings during active connection"))
             root.pageEnabled = false
         } else {
             root.pageEnabled = true
@@ -272,7 +272,7 @@ PageType {
 
             clickedFunc: function() {
                 searchField.focus = false
-                PageController.showBusyIndicator(true)
+                PageController.showBusyIndicatorRequired(true)
 
                 if (Qt.platform.os === "windows") {
                     var fileName = SystemController.getFileName(qsTr("Open executable file"),
@@ -284,7 +284,7 @@ PageType {
                     installedAppDrawer.open()
                 }
 
-                PageController.showBusyIndicator(false)
+                PageController.showBusyIndicatorRequired(false)
             }
         }
     }

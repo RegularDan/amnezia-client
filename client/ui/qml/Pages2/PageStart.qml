@@ -23,30 +23,30 @@ PageType {
     Connections {
         target: PageController
 
-        function onGoToPageHome() {
+        function onGoToPageHomeRequired() {
             tabBar.setCurrentIndex(0)
             tabBarStackView.goToTabBarPage(PageEnum.PageHome)
         }
 
-        function onGoToPageSettings() {
+        function onGoToPageSettingsRequired() {
             tabBar.setCurrentIndex(2)
             tabBarStackView.goToTabBarPage(PageEnum.PageSettings)
         }
 
-        function onGoToPageViewConfig() {
+        function onGoToPageViewConfigRequired() {
             var pagePath = PageController.getPagePath(PageEnum.PageSetupWizardViewConfig)
             tabBarStackView.push(pagePath, { "objectName" : pagePath }, StackView.PushTransition)
         }
 
-        function onDisableControls(disabled) {
+        function onDisableControlsRequired(disabled) {
             isControlsDisabled = disabled
         }
 
-        function onDisableTabBar(disabled) {
+        function onDisableTabBarRequired(disabled) {
             isTabBarDisabled = disabled
         }
 
-        function onClosePage() {
+        function onClosePageRequired() {
             if (tabBarStackView.depth <= 1) {
                 PageController.hideWindow()
                 return
@@ -54,7 +54,7 @@ PageType {
             tabBarStackView.pop()
         }
 
-        function onGoToPage(page, slide) {
+        function onGoToPageRequired(page, slide) {
             var pagePath = PageController.getPagePath(page)
 
             if (slide) {
@@ -64,7 +64,7 @@ PageType {
             }
         }
 
-        function onGoToStartPage() {
+        function onGoToStartPageRequired() {
             connectionTypeSelection.close()
             while (tabBarStackView.depth > 1) {
                 tabBarStackView.pop()
@@ -79,10 +79,10 @@ PageType {
             var pageName = tabBarStackView.currentItem.objectName
             if ((pageName === PageController.getPagePath(PageEnum.PageShare)) ||
                     (pageName === PageController.getPagePath(PageEnum.PageSettings))) {
-                PageController.goToPageHome()
+                PageController.goToPageHomeRequired()
                 tabBar.previousIndex = 0
             } else {
-                PageController.closePage()
+                PageController.closePageRequired()
             }
         }
 
@@ -101,9 +101,9 @@ PageType {
         target: InstallController
 
         function onInstallationErrorOccurred(error) {
-            PageController.showBusyIndicator(false)
+            PageController.showBusyIndicatorRequired(false)
 
-            PageController.showErrorMessage(error)
+            PageController.showErrorMessageRequired(error)
 
             var needCloseCurrentPage = false
             var currentPageName = tabBarStackView.currentItem.objectName
@@ -114,17 +114,17 @@ PageType {
                 needCloseCurrentPage = true
             }
             if (needCloseCurrentPage) {
-                PageController.closePage()
+                PageController.closePageRequired()
             }
         }
 
         function onUpdateContainerFinished(message) {
-            PageController.showNotificationMessage(message)
-            PageController.closePage()
+            PageController.showNotificationMessageRequired(message)
+            PageController.closePageRequired()
         }
 
         function onCachedProfileCleared(message) {
-            PageController.showNotificationMessage(message)
+            PageController.showNotificationMessageRequired(message)
         }
     }
 
@@ -132,8 +132,8 @@ PageType {
         target: ConnectionController
 
         function onReconnectWithUpdatedContainer(message) {
-            PageController.showNotificationMessage(message)
-            PageController.closePage()
+            PageController.showNotificationMessageRequired(message)
+            PageController.closePageRequired()
         }
 
         function onNoInstalledContainers() {
@@ -141,7 +141,7 @@ PageType {
 
             ServersModel.processedIndex = ServersModel.getDefaultServerIndex()
             InstallController.setShouldCreateServer(false)
-            PageController.goToPage(PageEnum.PageSetupWizardEasy)
+            PageController.goToPageRequired(PageEnum.PageSetupWizardEasy)
         }
     }
 
@@ -149,7 +149,7 @@ PageType {
         target: ImportController
 
         function onImportErrorOccurred(error, goToPageHome) {
-            PageController.showErrorMessage(error)
+            PageController.showErrorMessageRequired(error)
         }
     }
 
@@ -157,7 +157,7 @@ PageType {
         target: SettingsController
 
         function onLoggingDisableByWatcher() {
-            PageController.showNotificationMessage(qsTr("Logging was disabled after 14 days, log files were deleted"))
+            PageController.showNotificationMessageRequired(qsTr("Logging was disabled after 14 days, log files were deleted"))
         }
     }
 

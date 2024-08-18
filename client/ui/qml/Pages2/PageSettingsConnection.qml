@@ -81,7 +81,7 @@ PageType {
                 rightImageSource: "qrc:/images/controls/chevron-right.svg"
 
                 clickedFunction: function() {
-                    PageController.goToPage(PageEnum.PageSettingsDns)
+                    PageController.goToPageRequired(PageEnum.PageSettingsDns)
                 }
 
                 KeyNavigation.tab: splitTunnelingButton.rightButton
@@ -98,7 +98,7 @@ PageType {
                 rightImageSource: "qrc:/images/controls/chevron-right.svg"
 
                 clickedFunction: function() {
-                    PageController.goToPage(PageEnum.PageSettingsSplitTunneling)
+                    PageController.goToPageRequired(PageEnum.PageSettingsSplitTunneling)
                 }
 
                 Keys.onTabPressed: {
@@ -127,7 +127,7 @@ PageType {
                 rightImageSource: "qrc:/images/controls/chevron-right.svg"
 
                 clickedFunction: function() {
-                    PageController.goToPage(PageEnum.PageSettingsAppSplitTunneling)
+                    PageController.goToPageRequired(PageEnum.PageSettingsAppSplitTunneling)
                 }
 
                 Keys.onTabPressed: {
@@ -162,7 +162,7 @@ PageType {
                 }
                 onClicked: {
                     if (!checkable) {
-                        PageController.showNotificationMessage(qsTr("Cannot change killSwitch settings during active connection"))
+                        PageController.showNotificationMessageRequired(qsTr("Cannot change killSwitch settings during active connection"))
                     }
                 }
 

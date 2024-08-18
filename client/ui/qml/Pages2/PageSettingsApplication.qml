@@ -212,7 +212,7 @@ PageType {
                 parentFlickable: fl
 
                 clickedFunction: function() {
-                    PageController.goToPage(PageEnum.PageSettingsLogging)
+                    PageController.goToPageRequired(PageEnum.PageSettingsLogging)
                 }
             }
 
@@ -237,11 +237,11 @@ PageType {
 
                     var yesButtonFunction = function() {
                         if (ServersModel.isDefaultServerCurrentlyProcessed() && ConnectionController.isConnected) {
-                            PageController.showNotificationMessage(qsTr("Cannot reset settings during active connection"))
+                            PageController.showNotificationMessageRequired(qsTr("Cannot reset settings during active connection"))
                         } else
                         {
                             SettingsController.clearSettings()
-                            PageController.replaceStartPage()
+                            PageController.replaceStartPageRequired()
                         }
 
                         if (!GC.isMobile()) {

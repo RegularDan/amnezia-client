@@ -96,37 +96,36 @@ public slots:
     int getDrawerDepth();
 
   private slots:
-    void onShowErrorMessage(amnezia::ErrorCode errorCode);
+    void onShowErrorMessageRequired(amnezia::ErrorCode errorCode);
 
 signals:
-    void goToPage(PageLoader::PageEnum page, bool slide = true);
-    void goToStartPage();
-    void goToPageHome();
-    void goToPageSettings();
-    void goToPageViewConfig();
-    void goToPageSettingsServerServices();
-    void goToPageSettingsBackup();
+    void goToPageRequired(PageLoader::PageEnum page, bool slide = true);
+    void goToStartPageRequired();
+    void goToPageHomeRequired();
+    void goToPageSettingsRequired();
+    void goToPageViewConfigRequired();
+    void goToPageSettingsServerServicesRequired();
+    void goToPageSettingsBackupRequired();
 
-    void closePage();
+    void closePageRequired();
 
-    void restorePageHomeState(bool isContainerInstalled = false);
-    void replaceStartPage();
+    void restorePageHomeStateRequired(bool isContainerInstalled = false);
+    void replaceStartPageRequired();
 
-    void showErrorMessage(amnezia::ErrorCode);
-    void showErrorMessage(const QString &errorMessage);
-    void showNotificationMessage(const QString &message);
+    void showErrorMessageRequired(amnezia::ErrorCode);
+    void showErrorMessageRequired(const QString &errorMessage);
+    void showNotificationMessageRequired(const QString &message);
 
-    void showBusyIndicator(bool visible);
-    void disableControls(bool disabled);
-    void disableTabBar(bool disabled);
+    void showBusyIndicatorRequired(bool visible);
+    void disableControlsRequired(bool disabled);
+    void disableTabBarRequired(bool disabled);
 
-    void hideMainWindow();
-    void raiseMainWindow();
+    void hideMainWindowRequired();
+    void raiseMainWindowRequired();
 
     void showPassphraseRequestDrawer();
-    void passphraseRequestDrawerClosed(QString passphrase);
-
     void escapePressed();
+    void passphraseRequestDrawerCloseRequired(QString passphrase);
     void closeTopDrawer();
 
     void forceTabBarActiveFocus();

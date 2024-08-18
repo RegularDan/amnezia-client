@@ -63,7 +63,7 @@ DrawerType2 {
             KeyNavigation.tab: siteBasedSplitTunnelingSwitch.visible ? siteBasedSplitTunnelingSwitch.rightButton : focusItem
 
             clickedFunction: function() {
-//                PageController.goToPage(PageEnum.PageSettingsSplitTunneling)
+//                PageController.goToPageRequired(PageEnum.PageSettingsSplitTunneling)
 //                root.close()
             }
         }
@@ -86,7 +86,7 @@ DrawerType2 {
                                    focusItem
 
             clickedFunction: function() {
-                PageController.goToPage(PageEnum.PageSettingsSplitTunneling)
+                PageController.goToPageRequired(PageEnum.PageSettingsSplitTunneling)
                 root.close()
             }
         }
@@ -107,7 +107,7 @@ DrawerType2 {
             KeyNavigation.tab: focusItem
 
             clickedFunction: function() {
-                PageController.goToPage(PageEnum.PageSettingsAppSplitTunneling)
+                PageController.goToPageRequired(PageEnum.PageSettingsAppSplitTunneling)
                 root.close()
             }
         }

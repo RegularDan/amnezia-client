@@ -39,9 +39,9 @@ PageType {
 
         function onImportErrorOccurred(errorMessage, goToPageHome) {
             if (goToPageHome) {
-                PageController.goToStartPage()
+                PageController.goToStartPageRequired()
             } else {
-                PageController.closePage()
+                PageController.closePageRequired()
             }
         }
 
@@ -51,12 +51,12 @@ PageType {
                 ServersModel.processedIndex = ServersModel.defaultIndex
             }
 
-            PageController.goToStartPage()
+            PageController.goToStartPageRequired()
             if (stackView.currentItem.objectName === PageController.getPagePath(PageEnum.PageSetupWizardStart)) {
-                PageController.replaceStartPage()
+                PageController.replaceStartPageRequired()
             }
             if (stackView.currentItem.objectName !== PageController.getPagePath(PageEnum.PageHome)) {
-                PageController.goToPageHome()
+                PageController.goToPageHomeRequired()
             }
         }
     }

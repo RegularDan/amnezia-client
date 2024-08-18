@@ -109,7 +109,7 @@ PageType {
                             case ProtocolEnum.Ipsec: Ikev2ConfigModel.updateModel(ProtocolsModel.getConfig()); break;
                             case ProtocolEnum.Socks5Proxy: Socks5ProxyConfigModel.updateModel(ProtocolsModel.getConfig()); break;
                             }
-                            PageController.goToPage(protocolPage);
+                            PageController.goToPageRequired(protocolPage);
                         }
 
                         MouseArea {
@@ -143,13 +143,13 @@ PageType {
                 var yesButtonFunction = function() {
                     if (ConnectionController.isConnected && ServersModel.getDefaultServerData("defaultContainer") === ContainersModel.getProcessedContainerIndex()) {
                         var message = qsTr("Unable to clear %1 profile while there is an active connection").arg(ContainersModel.getProcessedContainerName())
-                        PageController.showNotificationMessage(message)
+                        PageController.showNotificationMessageRequired(message)
                         return
                     }
 
-                    PageController.showBusyIndicator(true)
+                    PageController.showBusyIndicatorRequired(true)
                     InstallController.clearCachedProfile()
-                    PageController.showBusyIndicator(false)
+                    PageController.showBusyIndicatorRequired(false)
                 }
                 var noButtonFunction = function() {
                     if (!GC.isMobile()) {
@@ -195,10 +195,10 @@ PageType {
                 var yesButtonFunction = function() {
                     if (ServersModel.isDefaultServerCurrentlyProcessed() && ConnectionController.isConnected
                     && ServersModel.getDefaultServerData("defaultContainer") === ContainersModel.getProcessedContainerIndex()) {
-                        PageController.showNotificationMessage(qsTr("Cannot remove active container"))
+                        PageController.showNotificationMessageRequired(qsTr("Cannot remove active container"))
                     } else
                     {
-                        PageController.goToPage(PageEnum.PageDeinstalling)
+                        PageController.goToPageRequired(PageEnum.PageDeinstalling)
                         InstallController.removeProcessedContainer()
                     }
                 }

@@ -125,7 +125,7 @@ PageType {
 
                             clickedFunction: function() {
                                 ServersModel.processedIndex = index
-                                PageController.goToPage(PageEnum.PageSettingsServerInfo)
+                                PageController.goToPageRequired(PageEnum.PageSettingsServerInfo)
                             }
                         }
 

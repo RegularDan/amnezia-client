@@ -21,11 +21,11 @@ PageType {
     Connections {
         target: PageController
 
-        function onGoToPageViewConfig() {
-            PageController.goToPage(PageEnum.PageSetupWizardViewConfig)
+        function onGoToPageViewConfigRequired() {
+            PageController.goToPageRequired(PageEnum.PageSetupWizardViewConfig)
         }
 
-        function onClosePage() {
+        function onClosePageRequired() {
             if (stackView.depth <= 1) {
                 PageController.hideWindow()
                 return
@@ -33,7 +33,7 @@ PageType {
             stackView.pop()
         }
 
-        function onGoToPage(page, slide) {
+        function onGoToPageRequired(page, slide) {
             var pagePath = PageController.getPagePath(page)
             if (slide) {
                 stackView.push(pagePath, { "objectName" : pagePath }, StackView.PushTransition)
@@ -42,17 +42,17 @@ PageType {
             }
         }
 
-        function onGoToStartPage() {
+        function onGoToStartPageRequired() {
             while (stackView.depth > 1) {
                 stackView.pop()
             }
         }
 
-        function onDisableControls(disabled) {
+        function onDisableControlsRequired(disabled) {
             isControlsDisabled = disabled
         }
 
-        function onDisableTabBar(disabled) {
+        function onDisableTabBarRequired(disabled) {
             isControlsDisabled = disabled
         }
 
@@ -61,7 +61,7 @@ PageType {
                 return
             }
 
-            PageController.closePage()
+            PageController.closePageRequired()
         }
     }
 
@@ -69,8 +69,8 @@ PageType {
         target: SettingsController
 
         function onRestoreBackupFinished() {
-            PageController.showNotificationMessage(qsTr("Settings restored from backup file"))
-            PageController.replaceStartPage()
+            PageController.showNotificationMessageRequired(qsTr("Settings restored from backup file"))
+            PageController.replaceStartPageRequired()
         }
     }
 
@@ -78,13 +78,13 @@ PageType {
         target: InstallController
 
         function onInstallationErrorOccurred(error) {
-            PageController.showBusyIndicator(false)
-            PageController.showErrorMessage(error)
+            PageController.showBusyIndicatorRequired(false)
+            PageController.showErrorMessageRequired(error)
 
             var currentPageName = stackView.currentItem.objectName
 
             if (currentPageName === PageController.getPagePath(PageEnum.PageSetupWizardInstalling)) {
-                PageController.closePage()
+                PageController.closePageRequired()
             }
         }
     }
@@ -93,13 +93,13 @@ PageType {
         target: ImportController
 
         function onRestoreAppConfig(data) {
-            PageController.showBusyIndicator(true)
+            PageController.showBusyIndicatorRequired(true)
             SettingsController.restoreAppConfigFromData(data)
-            PageController.showBusyIndicator(false)
+            PageController.showBusyIndicatorRequired(false)
         }
 
         function onImportErrorOccurred(error, goToPageHome) {
-            PageController.showErrorMessage(error)
+            PageController.showErrorMessageRequired(error)
         }
     }
 

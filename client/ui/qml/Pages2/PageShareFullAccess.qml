@@ -145,7 +145,7 @@ PageType {
 
                     shareConnectionDrawer.open()
                     shareConnectionDrawer.contentVisible = false
-                    PageController.showBusyIndicator(true)
+                    PageController.showBusyIndicatorRequired(true)
 
                     if (Qt.platform.os === "android") {
                         ExportController.generateFullAccessConfigAndroid();
@@ -153,7 +153,7 @@ PageType {
                         ExportController.generateFullAccessConfig();
                     }
 
-                    PageController.showBusyIndicator(false)
+                    PageController.showBusyIndicatorRequired(false)
 
                     shareConnectionDrawer.contentVisible = true
                 }

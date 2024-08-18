@@ -22,7 +22,7 @@ PageType {
         target: InstallController
 
         function onUpdateContainerFinished() {
-            PageController.showNotificationMessage(qsTr("Settings updated successfully"))
+            PageController.showNotificationMessageRequired(qsTr("Settings updated successfully"))
         }
     }
 
@@ -119,7 +119,7 @@ PageType {
 
                             clickedFunction: function() {
                                 GC.copyToClipBoard(descriptionText)
-                                PageController.showNotificationMessage(qsTr("Copied"))
+                                PageController.showNotificationMessageRequired(qsTr("Copied"))
                                 if (!GC.isMobile()) {
                                     this.rightButton.forceActiveFocus()
                                 }
@@ -143,7 +143,7 @@ PageType {
 
                             clickedFunction: function() {
                                 GC.copyToClipBoard(descriptionText)
-                                PageController.showNotificationMessage(qsTr("Copied"))
+                                PageController.showNotificationMessageRequired(qsTr("Copied"))
                                 if (!GC.isMobile()) {
                                     this.rightButton.forceActiveFocus()
                                 }
@@ -167,7 +167,7 @@ PageType {
 
                             clickedFunction: function() {
                                 GC.copyToClipBoard(descriptionText)
-                                PageController.showNotificationMessage(qsTr("Copied"))
+                                PageController.showNotificationMessageRequired(qsTr("Copied"))
                                 if (!GC.isMobile()) {
                                     this.rightButton.forceActiveFocus()
                                 }
@@ -200,7 +200,7 @@ PageType {
 
                             clickedFunction: function() {
                                 GC.copyToClipBoard(descriptionText)
-                                PageController.showNotificationMessage(qsTr("Copied"))
+                                PageController.showNotificationMessageRequired(qsTr("Copied"))
                                 if (!GC.isMobile()) {
                                     this.rightButton.forceActiveFocus()
                                 }
@@ -230,9 +230,9 @@ PageType {
                             text: qsTr("Mount folder on device")
 
                             clickedFunc: function() {
-                                PageController.showBusyIndicator(true)
+                                PageController.showBusyIndicatorRequired(true)
                                 InstallController.mountSftpDrive(port, password, username)
-                                PageController.showBusyIndicator(false)
+                                PageController.showBusyIndicatorRequired(false)
                             }
                         }
 

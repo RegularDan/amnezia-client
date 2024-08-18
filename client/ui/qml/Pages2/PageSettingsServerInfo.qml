@@ -24,7 +24,7 @@ PageType {
     Connections {
         target: PageController
 
-        function onGoToPageSettingsServerServices() {
+        function onGoToPageSettingsServerServicesRequired() {
             tabBar.currentIndex = 1
         }
     }

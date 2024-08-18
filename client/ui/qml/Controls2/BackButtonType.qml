@@ -40,7 +40,7 @@ Item {
                 if (backButtonFunction && typeof backButtonFunction === "function") {
                     backButtonFunction()
                 } else {
-                    PageController.closePage()
+                    PageController.closePageRequired()
                 }
             }
         }
