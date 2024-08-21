@@ -3,7 +3,6 @@ import QtQuick.Controls
 
 StackView {
     id: root
-    objectName: "StackViewType"
 
     pushEnter: Transition {
         PropertyAnimation {

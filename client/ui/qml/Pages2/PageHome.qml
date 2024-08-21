@@ -22,6 +22,7 @@ PageType {
     defaultActiveFocusItem: focusItem
 
     Connections {
+        objectName: "connectionPageController"
         target: PageController
 
         function onRestorePageHomeStateRequired(isContainerInstalled) {
@@ -37,6 +38,7 @@ PageType {
         anchors.bottomMargin: drawer.collapsedHeight
 
         ColumnLayout {
+            objectName: "columnLayout"
             anchors.fill: parent
             anchors.topMargin: 34
             anchors.bottomMargin: 34
@@ -50,6 +52,7 @@ PageType {
 
             BasicButtonType {
                 id: loggingButton
+                objectName: "loggingButton"
                 property bool isLoggingEnabled: SettingsController.isLoggingEnabled
 
                 Layout.alignment: Qt.AlignHCenter
@@ -78,6 +81,7 @@ PageType {
 
             ConnectButton {
                 id: connectButton
+                objectName: "connectButton"
                 Layout.fillHeight: true
                 Layout.alignment: Qt.AlignCenter
                 KeyNavigation.tab: splitTunnelingButton
@@ -139,6 +143,7 @@ PageType {
 
     DrawerType2 {
         id: drawer
+        objectName: "drawer"
         anchors.fill: parent
 
         onClosed: {

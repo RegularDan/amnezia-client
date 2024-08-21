@@ -33,6 +33,7 @@ Window  {
 
     StackViewType {
         id: rootStackView
+        objectName: "rootStackView"
 
         width: root.width
         height: root.height

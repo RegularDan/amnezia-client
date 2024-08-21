@@ -9,7 +9,6 @@ import "TextTypes"
 
 Button {
     id: root
-    objectName: "BasicButtonType"
 
     property string hoveredColor: AmneziaStyle.color.whiteHovered
     property string defaultColor: AmneziaStyle.color.white

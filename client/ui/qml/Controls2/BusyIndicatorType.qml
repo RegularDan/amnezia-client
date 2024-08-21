@@ -6,7 +6,6 @@ import Style 1.0
 
 Popup {
     id: root
-    objectName: "BusyIndicatoType"
 
     anchors.centerIn: parent
 

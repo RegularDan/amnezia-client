@@ -6,7 +6,6 @@ import Style 1.0
 
 Item {
     id: root
-    objectName: "BackButtonType"
 
     property string backButtonImage: "qrc:/images/controls/arrow-left.svg"
     property var backButtonFunction
