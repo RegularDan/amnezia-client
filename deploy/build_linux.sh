@@ -41,7 +41,10 @@ if [ -z "${QT_VERSION+x}" ]; then
     QT_BIN_DIR=/opt/Qt/$QT_VERSION/gcc_64/bin
   elif [ -f $HOME/Qt/$QT_VERSION/gcc_64/bin/qmake ]; then
     QT_BIN_DIR=$HOME/Qt/$QT_VERSION/gcc_64/bin
+  elif [ -f /usr/lib/qt6/bin/qmake ]; then # <- Arch's Qt6 directory
+    QT_BIN_DIR=/usr/lib/qt6/bin
   fi
+  echo "Qt was found in ${QT_BIN_DIR}"
 fi
 
 echo "Using Qt in $QT_BIN_DIR"
