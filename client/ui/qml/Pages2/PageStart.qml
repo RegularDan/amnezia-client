@@ -15,10 +15,9 @@ import "../Components"
 PageType {
     id: root
 
-    defaultActiveFocusItem: homeTabButton
-
     property bool isControlsDisabled: false
     property bool isTabBarDisabled: false
+    property alias homeButton: homeTabButton
 
     Connections {
         target: PageController
@@ -168,7 +167,7 @@ PageType {
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.bottom: tabBar.top
-
+        // activeFocusOnTab: true
         width: parent.width
         height: root.height - tabBar.implicitHeight
 
@@ -187,6 +186,8 @@ PageType {
             ServersModel.processedIndex = ServersModel.defaultIndex
             tabBarStackView.push(pagePath, { "objectName" : pagePath })
         }
+
+        KeyNavigation.down: tabBar.currentItem
     }
 
     TabBar {
@@ -226,6 +227,10 @@ PageType {
 
         TabImageButtonType {
             id: homeTabButton
+            objectName: "homeTabButton"
+
+            focus: true
+            activeFocusOnTab: true
             isSelected: tabBar.currentIndex === 0
             image: "qrc:/images/controls/home.svg"
             clickedFunc: function () {
@@ -235,14 +240,18 @@ PageType {
                 tabBar.previousIndex = 0
             }
 
-            KeyNavigation.tab: shareTabButton
+            // KeyNavigation.tab: shareTabButton
+            KeyNavigation.right: shareTabButton
+            KeyNavigation.up: tabBarStackView
             Keys.onEnterPressed: this.clicked()
             Keys.onReturnPressed: this.clicked()
         }
 
         TabImageButtonType {
             id: shareTabButton
+            objectName: "shareTabButton"
 
+            activeFocusOnTab: true
             Connections {
                 target: ServersModel
 
@@ -264,11 +273,15 @@ PageType {
                 tabBar.previousIndex = 1
             }
 
-            KeyNavigation.tab: settingsTabButton
+            // KeyNavigation.tab: settingsTabButton
+            KeyNavigation.right: settingsTabButton
+            KeyNavigation.up: tabBarStackView
         }
 
         TabImageButtonType {
             id: settingsTabButton
+            objectName: "settingsTabButton"
+
             isSelected: tabBar.currentIndex === 2
             image: "qrc:/images/controls/settings-2.svg"
             clickedFunc: function () {
@@ -276,19 +289,24 @@ PageType {
                 tabBar.currentIndex = 2
                 tabBar.previousIndex = 2
             }
-
-            KeyNavigation.tab: plusTabButton
+            activeFocusOnTab: true
+            // KeyNavigation.tab: plusTabButton
+            KeyNavigation.right: plusTabButton
+            KeyNavigation.up: tabBarStackView
         }
 
         TabImageButtonType {
             id: plusTabButton
+            objectName: "plusTabButton"
+            
             isSelected: tabBar.currentIndex === 3
             image: "qrc:/images/controls/plus.svg"
             clickedFunc: function () {
                 connectionTypeSelection.open()
             }
-
-            Keys.onTabPressed: PageController.forceStackActiveFocus()
+            activeFocusOnTab: true
+            KeyNavigation.tab: tabBarStackView.currentItem
+            KeyNavigation.up: tabBarStackView
         }
     }
 
@@ -299,5 +317,16 @@ PageType {
             PageController.forceTabBarActiveFocus()
             tabBar.setCurrentIndex(tabBar.previousIndex)
         }
+    }
+
+    Component.onCompleted: {
+        console.log("\n\n")
+        console.log("********************************************************")
+        console.log("===>> view: ", tabBarStackView)
+        console.log("===>> current item: ", tabBarStackView.currentItem)
+        console.log("===>> content item: ", tabBarStackView.contentItem)
+        console.log("===>> children", tabBarStackView.children)
+        console.log("===>> child[0]: ", tabBarStackView.children[0])
+        console.log("========================================================")
     }
 }

@@ -4,13 +4,13 @@ import QtQuick.Layouts
 
 import "../Config"
 
-Item {
+FocusScope {
     id: root
     objectName: "PageType"
 
     property StackView stackView: StackView.view
 
-    property var defaultActiveFocusItem: null
+    property Item defaultActiveFocusItem: null
 
     onVisibleChanged: {
         if (visible && !GC.isMobile()) {
@@ -24,7 +24,7 @@ Item {
         for (let i = 0; i < root.children.length; i++) {
             let child = root.children[i];
             console.log("\t|-[", i, "]:", child);
-            root.
+
             for (let j = 0; j < child.children.length; j++) {
                 let grandchild = child.children[j];
                 console.log("\t\t|-[", j, "]:", grandchild.type);
@@ -37,21 +37,21 @@ Item {
         console.log("<<<<<<<<<<<<<");
     }
 
-    function lastItemTabClicked(focusItem) {
-        if (GC.isMobile()) {
-            return
-        }
+    // function lastItemTabClicked(focusItem) {
+    //     if (GC.isMobile()) {
+    //         return
+    //     }
 
-        if (focusItem) {
-            focusItem.forceActiveFocus()
-            PageController.forceTabBarActiveFocus()
-        } else {
-            if (defaultActiveFocusItem) {
-                defaultActiveFocusItem.forceActiveFocus()
-            }
-            PageController.forceTabBarActiveFocus()
-        }
-    }
+    //     if (focusItem) {
+    //         focusItem.forceActiveFocus()
+    //         PageController.forceTabBarActiveFocus()
+    //     } else {
+    //         if (defaultActiveFocusItem) {
+    //             defaultActiveFocusItem.forceActiveFocus()
+    //         }
+    //         PageController.forceTabBarActiveFocus()
+    //     }
+    // }
 
 //    MouseArea {
 //        id: globalMouseArea

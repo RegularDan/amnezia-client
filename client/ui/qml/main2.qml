@@ -44,195 +44,203 @@ Window  {
             rootStackView.push(pagePath, { "objectName" : pagePath })
         }
 
-        Keys.onPressed: function(event) {
-            PageController.keyPressEvent(event.key)
-            event.accepted = true
-        }
+        // Keys.onPressed: function(event) {
+        //     // PageController.keyPressEvent(event.key)
+        //     // event.accepted = true
+        //     console.log("===>> Key event: ", event.key)
+        // }
     }
 
-    Connections {
-        target: PageController
+    // Connections {
+    //     objectName: "PageControllerConnections"
+    //     target: PageController
 
-        function onReplaceStartPageRequired() {
-            var pagePath = PageController.getInitialPage()
-            rootStackView.clear()
-            PageController.updateNavigationBarColor(PageController.getInitialPageNavigationBarColor())
-            rootStackView.replace(pagePath, { "objectName" : pagePath })
-        }
+    //     function onReplaceStartPageRequired() {
+    //         var pagePath = PageController.getInitialPage()
+    //         rootStackView.clear()
+    //         PageController.updateNavigationBarColor(PageController.getInitialPageNavigationBarColor())
+    //         rootStackView.replace(pagePath, { "objectName" : pagePath })
+    //     }
 
-        function onRaiseMainWindowRequired() {
-            root.show()
-            root.raise()
-            root.requestActivate()
-        }
+    //     function onRaiseMainWindowRequired() {
+    //         root.show()
+    //         root.raise()
+    //         root.requestActivate()
+    //     }
 
-        function onHideMainWindowRequired() {
-            root.hide()
-        }
+    //     function onHideMainWindowRequired() {
+    //         root.hide()
+    //     }
 
-        function onShowErrorMessageRequired(errorMessage) {
-            popupErrorMessage.text = errorMessage
-            popupErrorMessage.open()
-        }
+    //     function onShowErrorMessageRequired(errorMessage) {
+    //         popupErrorMessage.text = errorMessage
+    //         popupErrorMessage.open()
+    //     }
 
-        function onShowNotificationMessageRequired(message) {
-            popupNotificationMessage.text = message
-            popupNotificationMessage.closeButtonVisible = false
-            popupNotificationMessage.open()
-            popupNotificationTimer.start()
-        }
+    //     function onShowNotificationMessageRequired(message) {
+    //         popupNotificationMessage.text = message
+    //         popupNotificationMessage.closeButtonVisible = false
+    //         popupNotificationMessage.open()
+    //         popupNotificationTimer.start()
+    //     }
 
-        function onShowPassphraseRequestDrawerRequired() {
-            privateKeyPassphraseDrawer.open()
-        }
+    //     function onShowPassphraseRequestDrawerRequired() {
+    //         privateKeyPassphraseDrawer.open()
+    //     }
 
-        function onGoToPageSettingsBackupRequired() {
-            PageController.goToPageRequired(PageEnum.PageSettingsBackup)
-        }
+    //     function onGoToPageSettingsBackupRequired() {
+    //         PageController.goToPageRequired(PageEnum.PageSettingsBackup)
+    //     }
 
-        function onShowBusyIndicatorRequired(visible) {
-            busyIndicator.visible = visible
-            PageController.disableControlsRequired(visible)
-        }
-    }
+    //     function onShowBusyIndicatorRequired(visible) {
+    //         busyIndicator.visible = visible
+    //         PageController.disableControlsRequired(visible)
+    //     }
+    // }
 
-    Connections {
-        target: SettingsController
+    // Connections {
+    //     objectName: "SettingsControllerConnections"
+    //     target: SettingsController
 
-        function onChangeSettingsFinished(finishedMessage) {
-            PageController.showNotificationMessageRequired(finishedMessage)
-        }
-    }
+    //     function onChangeSettingsFinished(finishedMessage) {
+    //         PageController.showNotificationMessageRequired(finishedMessage)
+    //     }
+    // }
 
-    Item {
-        anchors.right: parent.right
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
+    // Item {
+    //     objectName: "popupNotificationItem"
+    //     anchors.right: parent.right
+    //     anchors.left: parent.left
+    //     anchors.bottom: parent.bottom
 
-        implicitHeight: popupNotificationMessage.height
+    //     implicitHeight: popupNotificationMessage.height
 
-        PopupType {
-            id: popupNotificationMessage
-        }
+    //     PopupType {
+    //         id: popupNotificationMessage
+    //     }
 
-        Timer {
-            id: popupNotificationTimer
+    //     Timer {
+    //         id: popupNotificationTimer
 
-            interval: 3000
-            repeat: false
-            running: false
-            onTriggered: {
-                popupNotificationMessage.close()
-            }
-        }
-    }
+    //         interval: 3000
+    //         repeat: false
+    //         running: false
+    //         onTriggered: {
+    //             popupNotificationMessage.close()
+    //         }
+    //     }
+    // }
 
-    Item {
-        anchors.right: parent.right
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
+    // Item {
+    //     objectName: "popupErrorMessageItem"
+    //     anchors.right: parent.right
+    //     anchors.left: parent.left
+    //     anchors.bottom: parent.bottom
 
-        implicitHeight: popupErrorMessage.height
+    //     implicitHeight: popupErrorMessage.height
 
-        PopupType {
-            id: popupErrorMessage
-        }
-    }
+    //     PopupType {
+    //         id: popupErrorMessage
+    //     }
+    // }
 
-    Item {
-        anchors.fill: parent
+    // Item {
+    //     objectName: "keypassdrawerItem"
+    //     anchors.fill: parent
 
-        DrawerType2 {
-            id: privateKeyPassphraseDrawer
+    //     DrawerType2 {
+    //         id: privateKeyPassphraseDrawer
 
-            anchors.fill: parent
-            expandedHeight: root.height * 0.35
+    //         anchors.fill: parent
+    //         expandedHeight: root.height * 0.35
 
-            expandedContent: ColumnLayout {
-                anchors.top: parent.top
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.topMargin: 16
-                anchors.leftMargin: 16
-                anchors.rightMargin: 16
+    //         expandedContent: ColumnLayout {
+    //             anchors.top: parent.top
+    //             anchors.left: parent.left
+    //             anchors.right: parent.right
+    //             anchors.topMargin: 16
+    //             anchors.leftMargin: 16
+    //             anchors.rightMargin: 16
 
-                Connections {
-                    target: privateKeyPassphraseDrawer
-                    function onOpened() {
-                        passphrase.textFieldText = ""
-                        passphrase.textField.forceActiveFocus()
-                    }
+    //             Connections {
+    //                 target: privateKeyPassphraseDrawer
+    //                 function onOpened() {
+    //                     passphrase.textFieldText = ""
+    //                     passphrase.textField.forceActiveFocus()
+    //                 }
 
-                    function onAboutToHide() {
-                        if (passphrase.textFieldText !== "") {
-                            PageController.showBusyIndicatorRequired(true)
-                        }
-                    }
+    //                 function onAboutToHide() {
+    //                     if (passphrase.textFieldText !== "") {
+    //                         PageController.showBusyIndicatorRequired(true)
+    //                     }
+    //                 }
 
-                    function onAboutToShow() {
-                        PageController.showBusyIndicatorRequired(false)
-                    }
-                }
+    //                 function onAboutToShow() {
+    //                     PageController.showBusyIndicatorRequired(false)
+    //                 }
+    //             }
 
-                TextFieldWithHeaderType {
-                    id: passphrase
+    //             TextFieldWithHeaderType {
+    //                 id: passphrase
 
-                    property bool hidePassword: true
+    //                 property bool hidePassword: true
 
-                    Layout.fillWidth: true
-                    headerText: qsTr("Private key passphrase")
-                    textField.echoMode: hidePassword ? TextInput.Password : TextInput.Normal
-                    buttonImageSource: hidePassword ? "qrc:/images/controls/eye.svg" : "qrc:/images/controls/eye-off.svg"
+    //                 Layout.fillWidth: true
+    //                 headerText: qsTr("Private key passphrase")
+    //                 textField.echoMode: hidePassword ? TextInput.Password : TextInput.Normal
+    //                 buttonImageSource: hidePassword ? "qrc:/images/controls/eye.svg" : "qrc:/images/controls/eye-off.svg"
 
-                    clickedFunc: function() {
-                        hidePassword = !hidePassword
-                    }
+    //                 clickedFunc: function() {
+    //                     hidePassword = !hidePassword
+    //                 }
 
-                    KeyNavigation.tab: saveButton
-                }
+    //                 KeyNavigation.tab: saveButton
+    //             }
 
-                BasicButtonType {
-                    id: saveButton
+    //             BasicButtonType {
+    //                 id: saveButton
 
-                    Layout.fillWidth: true
+    //                 Layout.fillWidth: true
 
-                    defaultColor: AmneziaStyle.color.transparent
-                    hoveredColor: AmneziaStyle.color.blackHovered
-                    pressedColor: AmneziaStyle.color.blackPressed
-                    disabledColor: AmneziaStyle.color.grey
-                    textColor: AmneziaStyle.color.white
-                    borderWidth: 1
+    //                 defaultColor: AmneziaStyle.color.transparent
+    //                 hoveredColor: AmneziaStyle.color.blackHovered
+    //                 pressedColor: AmneziaStyle.color.blackPressed
+    //                 disabledColor: AmneziaStyle.color.grey
+    //                 textColor: AmneziaStyle.color.white
+    //                 borderWidth: 1
 
-                    text: qsTr("Save")
+    //                 text: qsTr("Save")
 
-                    clickedFunc: function() {
-                        privateKeyPassphraseDrawer.close()
-                        PageController.passphraseRequestDrawerClosed(passphrase.textFieldText)
-                    }
-                }
-            }
-        }
-    }
+    //                 clickedFunc: function() {
+    //                     privateKeyPassphraseDrawer.close()
+    //                     PageController.passphraseRequestDrawerClosed(passphrase.textFieldText)
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
-    Item {
-        anchors.fill: parent
+    // Item {
+    //     objectName: "qestionDrawerItem"
+    //     anchors.fill: parent
 
-        QuestionDrawer {
-            id: questionDrawer
+    //     QuestionDrawer {
+    //         id: questionDrawer
 
-            anchors.fill: parent
-        }
-    }
+    //         anchors.fill: parent
+    //     }
+    // }
 
-    Item {
-        anchors.fill: parent
+    // Item {
+    //     objectName: "BusyIndicatorItem"
+    //     anchors.fill: parent
 
-        BusyIndicatorType {
-            id: busyIndicator
-            anchors.centerIn: parent
-            z: 1
-        }
-    }
+    //     BusyIndicatorType {
+    //         id: busyIndicator
+    //         anchors.centerIn: parent
+    //         z: 1
+    //     }
+    // }
 
     function showQuestionDrawer(headerText, descriptionText, yesButtonText, noButtonText, yesButtonFunction, noButtonFunction) {
         questionDrawer.headerText = headerText
@@ -255,15 +263,41 @@ Window  {
         questionDrawer.open()
     }
 
-    FileDialog {
-        id: mainFileDialog
+    // FileDialog {
+    //     id: mainFileDialog
 
-        property bool isSaveMode: false
+    //     property bool isSaveMode: false
 
-        objectName: "mainFileDialog"
-        fileMode: isSaveMode ? FileDialog.SaveFile : FileDialog.OpenFile
+    //     objectName: "mainFileDialog"
+    //     fileMode: isSaveMode ? FileDialog.SaveFile : FileDialog.OpenFile
 
-        onAccepted: SystemController.fileDialogClosed(true)
-        onRejected: SystemController.fileDialogClosed(false)
+    //     onAccepted: SystemController.fileDialogClosed(true)
+    //     onRejected: SystemController.fileDialogClosed(false)
+    // }
+
+    function getChildren(item, indent) {
+        if(item.children) {
+        for (let i = 0; i < item.children.length; i++) {
+            let child = item.children[i]
+            console.log(indent, "|-[", i, "]:", child)
+            // if (child.children) {
+            //     getChildren(child, indent + "  ")
+            // }
+        }
+        }
+    }
+
+    function getData(item, indent) {
+        for (let i = 0; i < item.data.length; i++) {
+            let child = item.data[i]
+            console.log(indent, "|-[", i, "]:", child)
+            // if (child.children) {
+            //     getChildren(child, indent + "  ")
+            // }
+        }
+    }
+
+    function getNextTabItem(item) {
+        return item.nextItemInFocusChain
     }
 }
