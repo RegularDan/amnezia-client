@@ -19,7 +19,7 @@ import "../Components"
 PageType {
     id: root
 
-    defaultActiveFocusItem: focusItem
+    defaultActiveFocusItem: loggingButton.visible ? loggingButton : connectButton
 
     Connections {
         target: PageController
@@ -40,13 +40,6 @@ PageType {
             anchors.fill: parent
             anchors.topMargin: 34
             anchors.bottomMargin: 34
-
-            Item {
-                id: focusItem
-                KeyNavigation.tab: loggingButton.visible ?
-                                       loggingButton :
-                                       connectButton
-            }
 
             BasicButtonType {
                 id: loggingButton

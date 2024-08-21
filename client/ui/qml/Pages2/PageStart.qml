@@ -15,7 +15,7 @@ import "../Components"
 PageType {
     id: root
 
-    defaultActiveFocusItem: homeTabButton
+    defaultActiveFocusItem: null
 
     property bool isControlsDisabled: false
     property bool isTabBarDisabled: false
@@ -108,7 +108,7 @@ PageType {
         function onInstallationErrorOccurred(error) {
             PageController.showBusyIndicatorRequired(false)
 
-            PageController.showErrorMessageRequired(error)
+            PageController.showErrorMessage(error)
 
             var needCloseCurrentPage = false
             var currentPageName = tabBarStackView.currentItem.objectName
@@ -181,7 +181,7 @@ PageType {
         target: ImportController
 
         function onImportErrorOccurred(error, goToPageHome) {
-            PageController.showErrorMessageRequired(error)
+            PageController.showErrorMessage(error)
         }
 
         function onRestoreAppConfig(data) {
@@ -242,6 +242,11 @@ PageType {
 
     TabBar {
         id: tabBar
+        objectName: "tabBar"
+        activeFocusOnTab: true
+
+        property Item upKeyTarget : tabBarStackView.currentItem
+        property Item downKeyTarget: tabBarStackView.currentItem
 
         anchors.right: parent.right
         anchors.left: parent.left
@@ -277,6 +282,8 @@ PageType {
 
         TabImageButtonType {
             id: homeTabButton
+            objectName: "homeTabButton"
+
             isSelected: tabBar.currentIndex === 0
             image: "qrc:/images/controls/home.svg"
             clickedFunc: function () {
@@ -285,13 +292,19 @@ PageType {
                 tabBar.currentIndex = 0
             }
 
+            focus: true
             KeyNavigation.tab: shareTabButton
+            KeyNavigation.right: shareTabButton
+            KeyNavigation.left: plusTabButton
+            KeyNavigation.up: tabBar.upKeyTarget
+            KeyNavigation.down: tabBar.downKeyTarget
             Keys.onEnterPressed: this.clicked()
             Keys.onReturnPressed: this.clicked()
         }
 
         TabImageButtonType {
             id: shareTabButton
+            objectName: "shareTabButton"
 
             Connections {
                 target: ServersModel
@@ -314,6 +327,10 @@ PageType {
             }
 
             KeyNavigation.tab: settingsTabButton
+            KeyNavigation.right: settingsTabButton
+            KeyNavigation.left: homeTabButton
+            KeyNavigation.up: tabBar.upKeyTarget
+            KeyNavigation.down: tabBar.downKeyTarget
         }
 
         TabImageButtonType {
@@ -326,6 +343,10 @@ PageType {
             }
 
             KeyNavigation.tab: plusTabButton
+            KeyNavigation.right: plusTabButton
+            KeyNavigation.left: shareTabButton
+            KeyNavigation.up: tabBar.upKeyTarget
+            KeyNavigation.down: tabBar.downKeyTarget
         }
 
         TabImageButtonType {
@@ -337,7 +358,11 @@ PageType {
                 tabBar.currentIndex = 3
             }
 
-            Keys.onTabPressed: PageController.forceStackActiveFocusRequired()
+            KeyNavigation.tab: tabBar.downKeyTarget
+            KeyNavigation.right: homeTabButton
+            KeyNavigation.left: settingsTabButton
+            KeyNavigation.up: tabBar.upKeyTarget
+            KeyNavigation.down: tabBar.downKeyTarget
         }
     }
 }

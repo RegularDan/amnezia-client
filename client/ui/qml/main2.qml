@@ -33,6 +33,8 @@ Window  {
     title: "AmneziaVPN"
 
     Connections {
+        objectName: "pageControllerConnections"
+
         target: PageController
 
         function onRaiseMainWindowRequired() {
@@ -72,6 +74,8 @@ Window  {
     }
 
     Connections {
+        objectName: "settingsControllerConnections"
+
         target: SettingsController
 
         function onChangeSettingsFinished(finishedMessage) {
@@ -80,10 +84,13 @@ Window  {
     }
 
     PageStart {
+        objectName: "pageStart"
         anchors.fill: parent
     }
 
     Item {
+        objectName: "popupNotificationItem"
+
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.bottom: parent.bottom
@@ -107,6 +114,8 @@ Window  {
     }
 
     Item {
+        objectName: "popupErrorItem"
+
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.bottom: parent.bottom
@@ -119,6 +128,8 @@ Window  {
     }
 
     Item {
+        objectName: "privateKeyPassphraseItem"
+
         anchors.fill: parent
 
         DrawerType2 {
@@ -194,6 +205,8 @@ Window  {
     }
 
     Item {
+        objectName: "questionDrawerItem"
+
         anchors.fill: parent
 
         QuestionDrawer {
@@ -204,6 +217,8 @@ Window  {
     }
 
     Item {
+        objectName: "busyIndicatorItem"
+
         anchors.fill: parent
 
         BusyIndicatorType {
