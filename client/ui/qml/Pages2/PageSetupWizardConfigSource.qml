@@ -19,9 +19,9 @@ PageType {
 
         function onQrDecodingFinished() {
             if (Qt.platform.os === "ios") {
-                PageController.closePage()
+                PageController.closePageRequired()
             }
-            PageController.goToPage(PageEnum.PageSetupWizardViewConfig)
+            PageController.goToPageRequired(PageEnum.PageSetupWizardViewConfig)
         }
     }
 
@@ -100,7 +100,7 @@ PageType {
 
                 clickedFunc: function() {
                     if (ImportController.extractConfigFromData(textKey.textFieldText)) {
-                        PageController.goToPage(PageEnum.PageSetupWizardViewConfig)
+                        PageController.goToPageRequired(PageEnum.PageSetupWizardViewConfig)
                     }
                 }
             }
@@ -133,11 +133,11 @@ PageType {
                 leftImageSource: "qrc:/images/controls/amnezia.svg"
 
                 onClicked: function() {
-                    PageController.showBusyIndicator(true)
+                    PageController.showBusyIndicatorRequired(true)
                     var result = InstallController.fillAvailableServices()
-                    PageController.showBusyIndicator(false)
+                    PageController.showBusyIndicatorRequired(false)
                     if (result) {
-                        PageController.goToPage(PageEnum.PageSetupWizardApiServicesList)
+                        PageController.goToPageRequired(PageEnum.PageSetupWizardApiServicesList)
                     }
                 }
             }
@@ -157,7 +157,7 @@ PageType {
                 leftImageSource: "qrc:/images/controls/server.svg"
 
                 onClicked: {
-                    PageController.goToPage(PageEnum.PageSetupWizardCredentials)
+                    PageController.goToPageRequired(PageEnum.PageSetupWizardCredentials)
                 }
             }
 
@@ -180,9 +180,9 @@ PageType {
                     var filePath = SystemController.getFileName(qsTr("Open backup file"),
                                                                 qsTr("Backup files (*.backup)"))
                     if (filePath !== "") {
-                        PageController.showBusyIndicator(true)
+                        PageController.showBusyIndicatorRequired(true)
                         SettingsController.restoreAppConfig(filePath)
-                        PageController.showBusyIndicator(false)
+                        PageController.showBusyIndicatorRequired(false)
                     }
                 }
             }
@@ -206,7 +206,7 @@ PageType {
                     var fileName = SystemController.getFileName(qsTr("Open config file"), nameFilter)
                     if (fileName !== "") {
                         if (ImportController.extractConfigFromFile(fileName)) {
-                            PageController.goToPage(PageEnum.PageSetupWizardViewConfig)
+                            PageController.goToPageRequired(PageEnum.PageSetupWizardViewConfig)
                         }
                     }
                 }
@@ -230,7 +230,7 @@ PageType {
                 onClicked: {
                     ImportController.startDecodingQr()
                     if (Qt.platform.os === "ios") {
-                        PageController.goToPage(PageEnum.PageSetupWizardQrReader)
+                        PageController.goToPageRequired(PageEnum.PageSetupWizardQrReader)
                     }
                 }
             }

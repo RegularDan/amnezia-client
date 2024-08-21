@@ -116,9 +116,9 @@ void AmneziaApplication::init()
     }
 
     connect(AndroidController::instance(), &AndroidController::importConfigFromOutside, [this](QString data) {
-        m_pageController->goToPageHome();
+        m_pageController->goToPageHomeRequired();
         m_importController->extractConfigFromData(data);
-        m_pageController->goToPageViewConfig();
+        m_pageController->goToPageViewConfigRequired();
     });
 
     m_engine->addImageProvider(QLatin1String("installedAppImage"), new InstalledAppsImageProvider);
@@ -127,14 +127,14 @@ void AmneziaApplication::init()
 #ifdef Q_OS_IOS
     IosController::Instance()->initialize();
     connect(IosController::Instance(), &IosController::importConfigFromOutside, [this](QString data) {
-        m_pageController->goToPageHome();
+        m_pageController->goToPageHomeRequired();
         m_importController->extractConfigFromData(data);
-        m_pageController->goToPageViewConfig();
+        m_pageController->goToPageViewConfigRequired();
     });
 
     connect(IosController::Instance(), &IosController::importBackupFromOutside, [this](QString filePath) {
-        m_pageController->goToPageHome();
-        m_pageController->goToPageSettingsBackup();
+        m_pageController->goToPageHomeRequired();
+        m_pageController->goToPageSettingsBackupRequired();
         m_settingsController->importBackupFromOutside(filePath);
     });
 
@@ -149,7 +149,7 @@ void AmneziaApplication::init()
     connect(m_vpnConnection.get(), &VpnConnection::connectionStateChanged, m_notificationHandler.get(),
             &NotificationHandler::setConnectionState);
 
-    connect(m_notificationHandler.get(), &NotificationHandler::raiseRequested, m_pageController.get(), &PageController::raiseMainWindow);
+    connect(m_notificationHandler.get(), &NotificationHandler::raiseRequested, m_pageController.get(), &PageController::raiseMainWindowRequired);
     connect(m_notificationHandler.get(), &NotificationHandler::connectRequested, m_connectionController.get(),
             static_cast<void (ConnectionController::*)()>(&ConnectionController::openConnection));
     connect(m_notificationHandler.get(), &NotificationHandler::disconnectRequested, m_connectionController.get(),
@@ -175,7 +175,7 @@ void AmneziaApplication::init()
     if (m_parser.isSet("a"))
         m_pageController->showOnStartup();
     else
-        emit m_pageController->raiseMainWindow();
+        emit m_pageController->raiseMainWindowRequired();
 #else
     m_pageController->showOnStartup();
 #endif
@@ -185,7 +185,7 @@ void AmneziaApplication::init()
     if (isPrimary()) {
         QObject::connect(this, &SingleApplication::instanceStarted, m_pageController.get(), [this]() {
             qDebug() << "Secondary instance started, showing this window instead";
-            emit m_pageController->raiseMainWindow();
+            emit m_pageController->raiseMainWindowRequired();
         });
     }
 #endif
@@ -383,13 +383,13 @@ void AmneziaApplication::initControllers()
 
     connect(m_connectionController.get(), qOverload<const QString &>(&ConnectionController::connectionErrorOccurred), this,
             [this](const QString &errorMessage) {
-                emit m_pageController->showErrorMessage(errorMessage);
+                emit m_pageController->showErrorMessageRequired(errorMessage);
                 emit m_vpnConnection->connectionStateChanged(Vpn::ConnectionState::Disconnected);
             });
 
     connect(m_connectionController.get(), qOverload<ErrorCode>(&ConnectionController::connectionErrorOccurred), this,
             [this](ErrorCode errorCode) {
-                emit m_pageController->showErrorMessage(errorCode);
+                emit m_pageController->showErrorMessageRequired(errorCode);
                 emit m_vpnConnection->connectionStateChanged(Vpn::ConnectionState::Disconnected);
             });
 
@@ -403,8 +403,8 @@ void AmneziaApplication::initControllers()
                                                     m_apiServicesModel, m_settings));
     m_engine->rootContext()->setContextProperty("InstallController", m_installController.get());
     connect(m_installController.get(), &InstallController::passphraseRequestStarted, m_pageController.get(),
-            &PageController::showPassphraseRequestDrawer);
-    connect(m_pageController.get(), &PageController::passphraseRequestDrawerClosed, m_installController.get(),
+            &PageController::showPassphraseRequestDrawerRequired);
+    connect(m_pageController.get(), &PageController::passphraseRequestDrawerCloseRequired, m_installController.get(),
             &InstallController::setEncryptedPassphrase);
     connect(m_installController.get(), &InstallController::currentContainerUpdated, m_connectionController.get(),
             &ConnectionController::onCurrentContainerUpdated);

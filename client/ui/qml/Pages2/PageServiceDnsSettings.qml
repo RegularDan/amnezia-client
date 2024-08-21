@@ -82,10 +82,10 @@ PageType {
                     var yesButtonFunction = function() {
                         if (ServersModel.isDefaultServerCurrentlyProcessed() && ConnectionController.isConnected
                         && SettingsController.isAmneziaDnsEnabled()) {
-                            PageController.showNotificationMessage(qsTr("Cannot remove AmneziaDNS from running server"))
+                            PageController.showNotificationMessageRequired(qsTr("Cannot remove AmneziaDNS from running server"))
                         } else
                         {
-                            PageController.goToPage(PageEnum.PageDeinstalling)
+                            PageController.goToPageRequired(PageEnum.PageDeinstalling)
                             InstallController.removeProcessedContainer()
                         }
                     }

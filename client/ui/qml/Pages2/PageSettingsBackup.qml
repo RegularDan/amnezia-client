@@ -23,12 +23,12 @@ PageType {
         target: SettingsController
 
         function onChangeSettingsErrorOccurred(errorMessage) {
-            PageController.showErrorMessage(errorMessage)
+            PageController.showErrorMessageRequired(errorMessage)
         }
 
         function onRestoreBackupFinished() {
-            PageController.showNotificationMessage(qsTr("Settings restored from backup file"))
-            PageController.goToPageHome()
+            PageController.showNotificationMessageRequired(qsTr("Settings restored from backup file"))
+            PageController.goToPageHomeRequired()
         }
 
         function onImportBackupFromOutside(filePath) {
@@ -105,10 +105,10 @@ PageType {
                                                                 ".backup")
                     }
                     if (fileName !== "") {
-                        PageController.showBusyIndicator(true)
+                        PageController.showBusyIndicatorRequired(true)
                         SettingsController.backupAppConfig(fileName)
-                        PageController.showBusyIndicator(false)
-                        PageController.showNotificationMessage(qsTr("Backup file saved"))
+                        PageController.showBusyIndicatorRequired(false)
+                        PageController.showNotificationMessageRequired(qsTr("Backup file saved"))
                     }
                 }
 
@@ -150,11 +150,11 @@ PageType {
 
         var yesButtonFunction = function() {
             if (ConnectionController.isConnected) {
-                PageController.showNotificationMessage(qsTr("Cannot restore backup settings during active connection"))
+                PageController.showNotificationMessageRequired(qsTr("Cannot restore backup settings during active connection"))
             } else {
-                PageController.showBusyIndicator(true)
+                PageController.showBusyIndicatorRequired(true)
                 SettingsController.restoreAppConfig(filePath)
-                PageController.showBusyIndicator(false)
+                PageController.showBusyIndicatorRequired(false)
             }
         }
         var noButtonFunction = function() {

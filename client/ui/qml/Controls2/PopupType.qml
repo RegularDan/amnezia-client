@@ -32,7 +32,7 @@ Popup {
     }
 
     onClosed: {
-        PageController.forceStackActiveFocus()
+        PageController.forceStackActiveFocusRequired()
     }
 
     background: Rectangle {

@@ -57,7 +57,7 @@ PageType {
 
                         onClicked: {
                             if (index !== ApiCountryModel.currentIndex) {
-                                PageController.showBusyIndicator(true)
+                                PageController.showBusyIndicatorRequired(true)
                                 var prevIndex = ApiCountryModel.currentIndex
                                 ApiCountryModel.currentIndex = index
                                 if (!InstallController.updateServiceFromApi(ServersModel.defaultIndex, countryCode, countryName)) {

@@ -33,39 +33,39 @@ PageType {
                 message = qsTr("No new installed containers found")
             }
 
-            PageController.showErrorMessage(message)
+            PageController.showErrorMessageRequired(message)
         }
 
         function onRemoveProcessedServerFinished(finishedMessage) {
             if (!ServersModel.getServersCount()) {
-                PageController.goToPageHome()
+                PageController.goToPageHomeRequired()
             } else {
-                PageController.goToStartPage()
-                PageController.goToPage(PageEnum.PageSettingsServersList)
+                PageController.goToStartPageRequired()
+                PageController.goToPageRequired(PageEnum.PageSettingsServersList)
             }
-            PageController.showNotificationMessage(finishedMessage)
+            PageController.showNotificationMessageRequired(finishedMessage)
         }
 
         function onRebootProcessedServerFinished(finishedMessage) {
-            PageController.showNotificationMessage(finishedMessage)
+            PageController.showNotificationMessageRequired(finishedMessage)
         }
 
         function onRemoveAllContainersFinished(finishedMessage) {
-            PageController.closePage() // close deInstalling page
-            PageController.showNotificationMessage(finishedMessage)
+            PageController.closePageRequired() // close deInstalling page
+            PageController.showNotificationMessageRequired(finishedMessage)
         }
 
         function onRemoveProcessedContainerFinished(finishedMessage) {
-            PageController.closePage() // close deInstalling page
-            PageController.closePage() // close page with remove button
-            PageController.showNotificationMessage(finishedMessage)
+            PageController.closePageRequired() // close deInstalling page
+            PageController.closePageRequired() // close page with remove button
+            PageController.showNotificationMessageRequired(finishedMessage)
         }
     }
 
     Connections {
         target: SettingsController
         function onChangeSettingsFinished(finishedMessage) {
-            PageController.showNotificationMessage(finishedMessage)
+            PageController.showNotificationMessageRequired(finishedMessage)
         }
     }
 
@@ -103,9 +103,9 @@ PageType {
                 KeyNavigation.tab: labelWithButton2
 
                 clickedFunction: function() {
-                    PageController.showBusyIndicator(true)
+                    PageController.showBusyIndicatorRequired(true)
                     InstallController.scanServerForInstalledContainers()
-                    PageController.showBusyIndicator(false)
+                    PageController.showBusyIndicatorRequired(false)
                 }
             }
 
@@ -131,11 +131,11 @@ PageType {
 
                     var yesButtonFunction = function() {
                         if (ServersModel.isDefaultServerCurrentlyProcessed() && ConnectionController.isConnected) {
-                            PageController.showNotificationMessage(qsTr("Cannot reboot server during active connection"))
+                            PageController.showNotificationMessageRequired(qsTr("Cannot reboot server during active connection"))
                         } else {
-                            PageController.showBusyIndicator(true)
+                            PageController.showBusyIndicatorRequired(true)
                             InstallController.rebootProcessedServer()
-                            PageController.showBusyIndicator(false)
+                            PageController.showBusyIndicatorRequired(false)
                         }
                         if (!GC.isMobile()) {
                             labelWithButton5.forceActiveFocus()
@@ -180,11 +180,11 @@ PageType {
 
                     var yesButtonFunction = function() {
                         if (ServersModel.isDefaultServerCurrentlyProcessed() && ConnectionController.isConnected) {
-                            PageController.showNotificationMessage(qsTr("Cannot remove server during active connection"))
+                            PageController.showNotificationMessageRequired(qsTr("Cannot remove server during active connection"))
                         } else {
-                            PageController.showBusyIndicator(true)
+                            PageController.showBusyIndicatorRequired(true)
                             InstallController.removeProcessedServer()
-                            PageController.showBusyIndicator(false)
+                            PageController.showBusyIndicatorRequired(false)
                         }
                         if (!GC.isMobile()) {
                             labelWithButton5.forceActiveFocus()
@@ -222,9 +222,9 @@ PageType {
 
                     var yesButtonFunction = function() {
                         if (ServersModel.isDefaultServerCurrentlyProcessed() && ConnectionController.isConnected) {
-                            PageController.showNotificationMessage(qsTr("Cannot clear server from Amnezia software during active connection"))
+                            PageController.showNotificationMessageRequired(qsTr("Cannot clear server from Amnezia software during active connection"))
                         } else {
-                            PageController.goToPage(PageEnum.PageDeinstalling)
+                            PageController.goToPageRequired(PageEnum.PageDeinstalling)
                             InstallController.removeAllContainers()
                         }
                         if (!GC.isMobile()) {
@@ -263,11 +263,11 @@ PageType {
 
                     var yesButtonFunction = function() {
                         if (ServersModel.isDefaultServerCurrentlyProcessed() && ConnectionController.isConnected) {
-                            PageController.showNotificationMessage(qsTr("Cannot reset API config during active connection"))
+                            PageController.showNotificationMessageRequired(qsTr("Cannot reset API config during active connection"))
                         } else {
-                            PageController.showBusyIndicator(true)
+                            PageController.showBusyIndicatorRequired(true)
                             InstallController.removeApiConfig(ServersModel.processedIndex)
-                            PageController.showBusyIndicator(false)
+                            PageController.showBusyIndicatorRequired(false)
                         }
 
                         if (!GC.isMobile()) {

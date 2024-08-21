@@ -44,7 +44,7 @@ PageType {
 
         Component.onCompleted: {
             if (isServerFromApi) {
-                PageController.showNotificationMessage(qsTr("Default server does not support custom DNS"))
+                PageController.showNotificationMessageRequired(qsTr("Default server does not support custom DNS"))
             }
         }
 
@@ -121,7 +121,7 @@ PageType {
                         primaryDns.textFieldText = SettingsController.primaryDns
                         SettingsController.secondaryDns = "1.0.0.1"
                         secondaryDns.textFieldText = SettingsController.secondaryDns
-                        PageController.showNotificationMessage(qsTr("Settings have been reset"))
+                        PageController.showNotificationMessageRequired(qsTr("Settings have been reset"))
 
                         if (!GC.isMobile()) {
                             defaultActiveFocusItem.forceActiveFocus()
@@ -153,7 +153,7 @@ PageType {
                     if (secondaryDns.textFieldText !== SettingsController.secondaryDns) {
                         SettingsController.secondaryDns = secondaryDns.textFieldText
                     }
-                    PageController.showNotificationMessage(qsTr("Settings saved"))
+                    PageController.showNotificationMessageRequired(qsTr("Settings saved"))
                 }
 
                 Keys.onTabPressed: lastItemTabClicked(focusItem)

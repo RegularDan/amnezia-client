@@ -88,7 +88,7 @@ PageType {
 
         clickedFunc: function() {
             if (ImportController.extractConfigFromData(textKey.textFieldText)) {
-                PageController.goToPage(PageEnum.PageSetupWizardViewConfig)
+                PageController.goToPageRequired(PageEnum.PageSetupWizardViewConfig)
             }
         }
     }

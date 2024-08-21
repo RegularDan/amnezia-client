@@ -360,13 +360,13 @@ PageType {
                                                                   transportPacketMagicHeaderTextField.textField.text,
                                                                   responsePacketMagicHeaderTextField.textField.text,
                                                                   initPacketMagicHeaderTextField.textField.text)) {
-                                    PageController.showErrorMessage(qsTr("The values of the H1-H4 fields must be unique"))
+                                    PageController.showErrorMessageRequired(qsTr("The values of the H1-H4 fields must be unique"))
                                     return
                                 }
 
                                 if (AwgConfigModel.isPacketSizeEqual(parseInt(initPacketJunkSizeTextField.textField.text),
                                                                      parseInt(responsePacketJunkSizeTextField.textField.text))) {
-                                    PageController.showErrorMessage(qsTr("The value of the field S1 + message initiation size (148) must not equal S2 + message response size (92)"))
+                                    PageController.showErrorMessageRequired(qsTr("The value of the field S1 + message initiation size (148) must not equal S2 + message response size (92)"))
                                     return
                                 }
 
@@ -379,11 +379,11 @@ PageType {
                                     forceActiveFocus()
 
                                     if (ConnectionController.isConnected && ServersModel.getDefaultServerData("defaultContainer") === ContainersModel.getProcessedContainerIndex()) {
-                                        PageController.showNotificationMessage(qsTr("Unable change settings while there is an active connection"))
+                                        PageController.showNotificationMessageRequired(qsTr("Unable change settings while there is an active connection"))
                                         return
                                     }
 
-                                    PageController.goToPage(PageEnum.PageSetupWizardInstalling);
+                                    PageController.goToPageRequired(PageEnum.PageSetupWizardInstalling);
                                     InstallController.updateContainer(AwgConfigModel.getConfig())
                                 }
                                 var noButtonFunction = function() {

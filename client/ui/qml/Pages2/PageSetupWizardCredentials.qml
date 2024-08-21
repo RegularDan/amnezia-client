@@ -126,14 +126,14 @@ PageType {
                     InstallController.setShouldCreateServer(true)
                     InstallController.setProcessedServerCredentials(hostname.textField.text, username.textField.text, secretData.textField.text)
 
-                    PageController.showBusyIndicator(true)
+                    PageController.showBusyIndicatorRequired(true)
                     var isConnectionOpened = InstallController.checkSshConnection()
-                    PageController.showBusyIndicator(false)
+                    PageController.showBusyIndicatorRequired(false)
                     if (!isConnectionOpened) {
                         return
                     }
 
-                    PageController.goToPage(PageEnum.PageSetupWizardEasy)
+                    PageController.goToPageRequired(PageEnum.PageSetupWizardEasy)
                 }
             }
 

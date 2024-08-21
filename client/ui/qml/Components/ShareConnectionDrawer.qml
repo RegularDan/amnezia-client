@@ -100,9 +100,9 @@ DrawerType2 {
                                                                     configExtension)
                         }
                         if (fileName !== "") {
-                            PageController.showBusyIndicator(true)
+                            PageController.showBusyIndicatorRequired(true)
                             ExportController.exportConfig(fileName)
-                            PageController.showBusyIndicator(false)
+                            PageController.showBusyIndicatorRequired(false)
                         }
                     }
                 }
@@ -208,7 +208,7 @@ DrawerType2 {
                                 nativeConfigString.selectAll()
                                 nativeConfigString.copy()
                                 nativeConfigString.select(0, 0)
-                                PageController.showNotificationMessage(qsTr("Copied"))
+                                PageController.showNotificationMessageRequired(qsTr("Copied"))
                             }
                         }
 
@@ -218,7 +218,7 @@ DrawerType2 {
                                 configText.selectAll()
                                 configText.copy()
                                 configText.select(0, 0)
-                                PageController.showNotificationMessage(qsTr("Copied"))
+                                PageController.showNotificationMessageRequired(qsTr("Copied"))
                                 header.forceActiveFocus()
                             }
                         }

@@ -15,8 +15,8 @@ import "../Config"
 PageType {
     id: root
 
-    Component.onCompleted: PageController.disableTabBar(true)
-    Component.onDestruction: PageController.disableTabBar(false)
+    Component.onCompleted: PageController.disableTabBarRequired(true)
+    Component.onDestruction: PageController.disableTabBarRequired(false)
 
     property bool isTimerRunning: true
     property string progressBarText: qsTr("Usually it takes no more than 5 minutes")
@@ -31,14 +31,14 @@ PageType {
                 ServersModel.setDefaultContainer(ServersModel.processedIndex, containerIndex)
             }
 
-            PageController.closePage() // close installing page
-            PageController.closePage() // close protocol settings page
+            PageController.closePageRequired() // close installing page
+            PageController.closePageRequired() // close protocol settings page
 
             if (stackView.currentItem.objectName === PageController.getPagePath(PageEnum.PageHome)) {
-                PageController.restorePageHomeState(true)
+                PageController.restorePageHomeStateRequired(true)
             }
 
-            PageController.showNotificationMessage(finishedMessage)
+            PageController.showNotificationMessageRequired(finishedMessage)
         }
 
         function onInstallServerFinished(finishedMessage) {
@@ -47,16 +47,16 @@ PageType {
                 ServersModel.processedIndex = ServersModel.defaultIndex
             }
 
-            PageController.goToPageHome()
-            PageController.showNotificationMessage(finishedMessage)
+            PageController.goToPageHomeRequired()
+            PageController.showNotificationMessageRequired(finishedMessage)
         }
 
         function onServerAlreadyExists(serverIndex) {
-            PageController.goToStartPage()
+            PageController.goToStartPageRequired()
             ServersModel.processedIndex = serverIndex
-            PageController.goToPage(PageEnum.PageSettingsServerInfo, false)
+            PageController.goToPageRequired(PageEnum.PageSettingsServerInfo, false)
 
-            PageController.showErrorMessage(qsTr("The server has already been added to the application"))
+            PageController.showErrorMessageRequired(qsTr("The server has already been added to the application"))
         }
 
         function onServerIsBusy(isBusy) {
@@ -165,7 +165,7 @@ PageType {
 
                             clickedFunc: function() {
                                 InstallController.cancelInstallation()
-                                PageController.showBusyIndicator(true)
+                                PageController.showBusyIndicatorRequired(true)
                             }
                         }
                     }

@@ -24,7 +24,7 @@ PageType {
     Connections {
         target: PageController
 
-        function onRestorePageHomeState(isContainerInstalled) {
+        function onRestorePageHomeStateRequired(isContainerInstalled) {
             drawer.open()
             if (isContainerInstalled) {
                 containersDropDown.rootButtonClickedFunction()
@@ -72,7 +72,7 @@ PageType {
                 KeyNavigation.tab: connectButton
 
                 onClicked: {
-                    PageController.goToPage(PageEnum.PageSettingsLogging)
+                    PageController.goToPageRequired(PageEnum.PageSettingsLogging)
                 }
             }
 
@@ -492,7 +492,7 @@ PageType {
 
                                 onClicked: {
                                     if (ConnectionController.isConnected) {
-                                        PageController.showNotificationMessage(qsTr("Unable change server while there is an active connection"))
+                                        PageController.showNotificationMessageRequired(qsTr("Unable change server while there is an active connection"))
                                         return
                                     }
 
@@ -536,7 +536,7 @@ PageType {
 
                                 onClicked: function() {
                                     ServersModel.processedIndex = index
-                                    PageController.goToPage(PageEnum.PageSettingsServerInfo)
+                                    PageController.goToPageRequired(PageEnum.PageSettingsServerInfo)
                                     drawer.close()
                                 }
                             }

@@ -23,7 +23,7 @@ PageType {
         target: InstallController
 
         function onUpdateContainerFinished() {
-            PageController.showNotificationMessage(qsTr("Settings updated successfully"))
+            PageController.showNotificationMessageRequired(qsTr("Settings updated successfully"))
         }
     }
 
@@ -111,7 +111,7 @@ PageType {
 
                         clickedFunction: function() {
                             GC.copyToClipBoard(descriptionText)
-                            PageController.showNotificationMessage(qsTr("Copied"))
+                            PageController.showNotificationMessageRequired(qsTr("Copied"))
                             if (!GC.isMobile()) {
                                 this.rightButton.forceActiveFocus()
                             }
@@ -135,7 +135,7 @@ PageType {
 
                         clickedFunction: function() {
                             GC.copyToClipBoard(descriptionText)
-                            PageController.showNotificationMessage(qsTr("Copied"))
+                            PageController.showNotificationMessageRequired(qsTr("Copied"))
                             if (!GC.isMobile()) {
                                 this.rightButton.forceActiveFocus()
                             }
@@ -159,7 +159,7 @@ PageType {
 
                         clickedFunction: function() {
                             GC.copyToClipBoard(descriptionText)
-                            PageController.showNotificationMessage(qsTr("Copied"))
+                            PageController.showNotificationMessageRequired(qsTr("Copied"))
                             if (!GC.isMobile()) {
                                 this.rightButton.forceActiveFocus()
                             }
@@ -186,7 +186,7 @@ PageType {
 
                         clickedFunction: function() {
                             GC.copyToClipBoard(descriptionText)
-                            PageController.showNotificationMessage(qsTr("Copied"))
+                            PageController.showNotificationMessageRequired(qsTr("Copied"))
                             if (!GC.isMobile()) {
                                 this.rightButton.forceActiveFocus()
                             }
@@ -351,7 +351,7 @@ PageType {
                                         return
                                     }
 
-                                    PageController.goToPage(PageEnum.PageSetupWizardInstalling)
+                                    PageController.goToPageRequired(PageEnum.PageSetupWizardInstalling)
                                     InstallController.updateContainer(Socks5ProxyConfigModel.getConfig())
                                     tempPort = portTextField.textFieldText
                                     tempUsername = usernameTextField.textFieldText

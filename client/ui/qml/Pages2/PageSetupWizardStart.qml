@@ -48,7 +48,7 @@ PageType {
             text: qsTr("Let's get started")
 
             clickedFunc: function() {
-                PageController.goToPage(PageEnum.PageSetupWizardConfigSource)
+                PageController.goToPageRequired(PageEnum.PageSetupWizardConfigSource)
             }
 
             Keys.onTabPressed: lastItemTabClicked(focusItem)

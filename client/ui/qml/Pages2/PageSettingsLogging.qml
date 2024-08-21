@@ -23,7 +23,7 @@ PageType {
             if (SettingsController.isLoggingEnabled) {
                 var message = qsTr("Logging is enabled. Note that logs will be automatically \
 disabled after 14 days, and all log files will be deleted.")
-                PageController.showNotificationMessage(message)
+                PageController.showNotificationMessageRequired(message)
             }
         }
     }
@@ -147,10 +147,10 @@ disabled after 14 days, and all log files will be deleted.")
                                                                         ".log")
                             }
                             if (fileName !== "") {
-                                PageController.showBusyIndicator(true)
+                                PageController.showBusyIndicatorRequired(true)
                                 SettingsController.exportLogsFile(fileName)
-                                PageController.showBusyIndicator(false)
-                                PageController.showNotificationMessage(qsTr("Logs file saved"))
+                                PageController.showBusyIndicatorRequired(false)
+                                PageController.showNotificationMessageRequired(qsTr("Logs file saved"))
                             }
                         }
                     }
@@ -186,10 +186,10 @@ disabled after 14 days, and all log files will be deleted.")
                             var noButtonText = qsTr("Cancel")
 
                             var yesButtonFunction = function() {
-                                PageController.showBusyIndicator(true)
+                                PageController.showBusyIndicatorRequired(true)
                                 SettingsController.clearLogs()
-                                PageController.showBusyIndicator(false)
-                                PageController.showNotificationMessage(qsTr("Logs have been cleaned up"))
+                                PageController.showBusyIndicatorRequired(false)
+                                PageController.showNotificationMessageRequired(qsTr("Logs have been cleaned up"))
                                 if (!GC.isMobile()) {
                                     focusItem.forceActiveFocus()
                                 }

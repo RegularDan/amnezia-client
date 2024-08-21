@@ -106,7 +106,7 @@ ListView {
 
                 onClicked: {
                     if (ConnectionController.isConnected && isInstalled) {
-                        PageController.showNotificationMessage(qsTr("Unable change protocol while there is an active connection"))
+                        PageController.showNotificationMessageRequired(qsTr("Unable change protocol while there is an active connection"))
                         return
                     }
 
@@ -116,7 +116,7 @@ ListView {
                     } else {
                         ContainersModel.setProcessedContainerIndex(proxyDefaultServerContainersModel.mapToSource(index))
                         InstallController.setShouldCreateServer(false)
-                        PageController.goToPage(PageEnum.PageSetupWizardProtocolSettings)
+                        PageController.goToPageRequired(PageEnum.PageSetupWizardProtocolSettings)
                         containersDropDown.close()
                     }
                 }

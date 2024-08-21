@@ -153,7 +153,7 @@ PageType {
 
                             clickedFunction: function() {
                                 ContainersModel.setProcessedContainerIndex(proxyContainersModel.mapToSource(index))
-                                PageController.goToPage(PageEnum.PageSetupWizardProtocolSettings)
+                                PageController.goToPageRequired(PageEnum.PageSetupWizardProtocolSettings)
                             }
                         }
 

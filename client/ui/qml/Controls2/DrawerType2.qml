@@ -43,7 +43,7 @@ Item {
     Connections {
         target: PageController
 
-        function onCloseTopDrawer() {
+        function onCloseTopDrawerRequired() {
             if (depthIndex === PageController.getDrawerDepth()) {
                 if (isCollapsed) {
                     return

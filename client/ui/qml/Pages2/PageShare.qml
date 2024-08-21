@@ -32,12 +32,12 @@ PageType {
 
     signal revokeConfig(int index)
     onRevokeConfig: function(index) {
-        PageController.showBusyIndicator(true)
+        PageController.showBusyIndicatorRequired(true)
         ExportController.revokeConfig(index,
                                       ContainersModel.getProcessedContainerIndex(),
                                       ServersModel.getProcessedServerCredentials())
-        PageController.showBusyIndicator(false)
-        PageController.showNotificationMessage(qsTr("Config revoked"))
+        PageController.showBusyIndicatorRequired(false)
+        PageController.showNotificationMessageRequired(qsTr("Config revoked"))
     }
 
     Connections {
@@ -49,7 +49,7 @@ PageType {
 
             shareConnectionDrawer.open()
             shareConnectionDrawer.contentVisible = false
-            PageController.showBusyIndicator(true)
+            PageController.showBusyIndicatorRequired(true)
 
             switch (type) {
             case PageShare.ConfigType.AmneziaConnection: {
@@ -100,13 +100,13 @@ PageType {
             }
             }
 
-            PageController.showBusyIndicator(false)
+            PageController.showBusyIndicatorRequired(false)
         }
 
         function onExportErrorOccurred(error) {
             shareConnectionDrawer.close()
 
-            PageController.showErrorMessage(error)
+            PageController.showErrorMessageRequired(error)
         }
     }
 
@@ -254,7 +254,7 @@ PageType {
                             KeyNavigation.tab: focusItem
 
                             clickedFunction: function() {
-                                PageController.goToPage(PageEnum.PageShareFullAccess)
+                                PageController.goToPageRequired(PageEnum.PageShareFullAccess)
                                 shareFullAccessDrawer.close()
                             }
 
@@ -309,10 +309,10 @@ PageType {
 
                         onClicked: {
                             accessTypeSelector.currentIndex = 1
-                            PageController.showBusyIndicator(true)
+                            PageController.showBusyIndicatorRequired(true)
                             ExportController.updateClientManagementModel(ContainersModel.getProcessedContainerIndex(),
                                                                          ServersModel.getProcessedServerCredentials())
-                            PageController.showBusyIndicator(false)
+                            PageController.showBusyIndicatorRequired(false)
                             focusItem.forceActiveFocus()
                         }
                     }
@@ -478,10 +478,10 @@ PageType {
                         fillConnectionTypeModel()
 
                         if (accessTypeSelector.currentIndex === 1) {
-                            PageController.showBusyIndicator(true)
+                            PageController.showBusyIndicatorRequired(true)
                             ExportController.updateClientManagementModel(ContainersModel.getProcessedContainerIndex(),
                                                                          ServersModel.getProcessedServerCredentials())
-                            PageController.showBusyIndicator(false)
+                            PageController.showBusyIndicatorRequired(false)
                         }
                     }
 
@@ -927,12 +927,12 @@ PageType {
                                                     }
 
                                                     if (clientNameEditor.textFieldText !== clientName) {
-                                                        PageController.showBusyIndicator(true)
+                                                        PageController.showBusyIndicatorRequired(true)
                                                         ExportController.renameClient(index,
                                                                                       clientNameEditor.textFieldText,
                                                                                       ContainersModel.getProcessedContainerIndex(),
                                                                                       ServersModel.getProcessedServerCredentials())
-                                                        PageController.showBusyIndicator(false)
+                                                        PageController.showBusyIndicatorRequired(false)
                                                         clientNameEditDrawer.close()
                                                     }
                                                 }

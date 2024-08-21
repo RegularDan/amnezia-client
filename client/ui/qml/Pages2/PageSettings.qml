@@ -53,7 +53,7 @@ PageType {
                 leftImageSource: "qrc:/images/controls/server.svg"
 
                 clickedFunction: function() {
-                    PageController.goToPage(PageEnum.PageSettingsServersList)
+                    PageController.goToPageRequired(PageEnum.PageSettingsServersList)
                 }
 
                 KeyNavigation.tab: connection.rightButton
@@ -70,7 +70,7 @@ PageType {
                 leftImageSource: "qrc:/images/controls/radio.svg"
 
                 clickedFunction: function() {
-                    PageController.goToPage(PageEnum.PageSettingsConnection)
+                    PageController.goToPageRequired(PageEnum.PageSettingsConnection)
                 }
 
                 KeyNavigation.tab: application.rightButton
@@ -87,7 +87,7 @@ PageType {
                 leftImageSource: "qrc:/images/controls/app.svg"
 
                 clickedFunction: function() {
-                    PageController.goToPage(PageEnum.PageSettingsApplication)
+                    PageController.goToPageRequired(PageEnum.PageSettingsApplication)
                 }
 
                 KeyNavigation.tab: backup.rightButton
@@ -104,7 +104,7 @@ PageType {
                 leftImageSource: "qrc:/images/controls/save.svg"
 
                 clickedFunction: function() {
-                    PageController.goToPage(PageEnum.PageSettingsBackup)
+                    PageController.goToPageRequired(PageEnum.PageSettingsBackup)
                 }
 
                 KeyNavigation.tab: about.rightButton
@@ -121,7 +121,7 @@ PageType {
                 leftImageSource: "qrc:/images/controls/amnezia.svg"
 
                 clickedFunction: function() {
-                    PageController.goToPage(PageEnum.PageSettingsAbout)
+                    PageController.goToPageRequired(PageEnum.PageSettingsAbout)
                 }
                 KeyNavigation.tab: close
 
@@ -141,7 +141,7 @@ PageType {
                 // Keys.onTabPressed: lastItemTabClicked(header)
 
                 clickedFunction: function() {
-                    PageController.goToPage(PageEnum.PageDevMenu)
+                    PageController.goToPageRequired(PageEnum.PageDevMenu)
                 }
             }
 

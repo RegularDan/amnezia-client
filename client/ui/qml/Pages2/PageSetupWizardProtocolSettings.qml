@@ -268,7 +268,7 @@ PageType {
                                     return
                                 }
 
-                                PageController.goToPage(PageEnum.PageSetupWizardInstalling);
+                                PageController.goToPageRequired(PageEnum.PageSetupWizardInstalling);
                                 InstallController.install(dockerContainer, port.textFieldText, transportProtoSelector.currentIndex)
                             }
                         }

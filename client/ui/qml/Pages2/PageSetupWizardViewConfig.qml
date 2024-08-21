@@ -39,9 +39,9 @@ PageType {
 
         function onImportErrorOccurred(errorMessage, goToPageHome) {
             if (goToPageHome) {
-                PageController.goToStartPage()
+                PageController.goToStartPageRequired()
             } else {
-                PageController.closePage()
+                PageController.closePageRequired()
             }
         }
 
@@ -51,7 +51,7 @@ PageType {
                 ServersModel.processedIndex = ServersModel.defaultIndex
             }
 
-            PageController.goToPageHome()
+            PageController.goToPageHomeRequired()
         }
     }
 

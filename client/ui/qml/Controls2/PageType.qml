@@ -4,7 +4,7 @@ import QtQuick.Layouts
 
 import "../Config"
 
-Item {
+FocusScope {
     id: root
 
     property StackView stackView: StackView.view
@@ -24,12 +24,12 @@ Item {
 
         if (focusItem) {
             focusItem.forceActiveFocus()
-            PageController.forceTabBarActiveFocus()
+            PageController.forceTabBarActiveFocusRequired()
         } else {
             if (defaultActiveFocusItem) {
                 defaultActiveFocusItem.forceActiveFocus()
             }
-            PageController.forceTabBarActiveFocus()
+            PageController.forceTabBarActiveFocusRequired()
         }
     }
 

@@ -116,7 +116,7 @@ PageType {
 
                 clickedFunction: function() {
                     GC.copyToClipBoard(descriptionText)
-                    PageController.showNotificationMessage(qsTr("Copied"))
+                    PageController.showNotificationMessageRequired(qsTr("Copied"))
                     if (!GC.isMobile()) {
                         this.rightButton.forceActiveFocus()
                     }
@@ -147,11 +147,11 @@ PageType {
 
                     var yesButtonFunction = function() {
                         if (ServersModel.isDefaultServerCurrentlyProcessed() && ConnectionController.isConnected) {
-                            PageController.showNotificationMessage(qsTr("Cannot reload API config during active connection"))
+                            PageController.showNotificationMessageRequired(qsTr("Cannot reload API config during active connection"))
                         } else {
-                            PageController.showBusyIndicator(true)
+                            PageController.showBusyIndicatorRequired(true)
                             InstallController.updateServiceFromApi(ServersModel.processedIndex, "", "", true)
-                            PageController.showBusyIndicator(false)
+                            PageController.showBusyIndicatorRequired(false)
                         }
                     }
                     var noButtonFunction = function() {
@@ -187,11 +187,11 @@ PageType {
 
                     var yesButtonFunction = function() {
                         if (ServersModel.isDefaultServerCurrentlyProcessed() && ConnectionController.isConnected) {
-                            PageController.showNotificationMessage(qsTr("Cannot remove server during active connection"))
+                            PageController.showNotificationMessageRequired(qsTr("Cannot remove server during active connection"))
                         } else {
-                            PageController.showBusyIndicator(true)
+                            PageController.showBusyIndicatorRequired(true)
                             InstallController.removeProcessedServer()
-                            PageController.showBusyIndicator(false)
+                            PageController.showBusyIndicatorRequired(false)
                         }
                     }
                     var noButtonFunction = function() {

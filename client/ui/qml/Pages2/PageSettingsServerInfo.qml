@@ -30,7 +30,7 @@ PageType {
     Connections {
         target: PageController
 
-        function onGoToPageSettingsServerServices() {
+        function onGoToPageSettingsServerServicesRequired() {
             tabBar.currentIndex = root.pageSettingsServerServices
         }
     }
@@ -82,7 +82,7 @@ PageType {
                                 ServersModel.getProcessedServerData("isCountrySelectionAvailable")) {
                             nestedStackView.currentIndex = root.pageSettingsApiLanguageList
                         } else {
-                            PageController.closePage()
+                            PageController.closePageRequired()
                         }
                     }
                 }

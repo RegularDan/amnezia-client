@@ -82,7 +82,7 @@ ListView {
                         if (serviceType !== ProtocolEnum.Other) {
                             if (config[ContainerProps.containerTypeToString(containerIndex)]["isThirdPartyConfig"]) {
                                 ProtocolsModel.updateModel(config)
-                                PageController.goToPage(PageEnum.PageProtocolRaw)
+                                PageController.goToPageRequired(PageEnum.PageProtocolRaw)
                                 return
                             }
                         }
@@ -90,23 +90,23 @@ ListView {
                         switch (containerIndex) {
                         case ContainerEnum.Ipsec: {
                             ProtocolsModel.updateModel(config)
-                            PageController.goToPage(PageEnum.PageProtocolRaw)
+                            PageController.goToPageRequired(PageEnum.PageProtocolRaw)
                             break
                         }
                         case ContainerEnum.Dns: {
-                            PageController.goToPage(PageEnum.PageServiceDnsSettings)
+                            PageController.goToPageRequired(PageEnum.PageServiceDnsSettings)
                             break
                         }
                         default: {
                             ProtocolsModel.updateModel(config)
-                            PageController.goToPage(PageEnum.PageSettingsServerProtocol)
+                            PageController.goToPageRequired(PageEnum.PageSettingsServerProtocol)
                         }
                         }
 
                     } else {
                         ContainersModel.setProcessedContainerIndex(root.model.mapToSource(index))
                         InstallController.setShouldCreateServer(false)
-                        PageController.goToPage(PageEnum.PageSetupWizardProtocolSettings)
+                        PageController.goToPageRequired(PageEnum.PageSetupWizardProtocolSettings)
                     }
                 }
 

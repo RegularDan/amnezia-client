@@ -142,12 +142,12 @@ PageType {
             var endpoint = ApiServicesModel.getStoreEndpoint()
             if (endpoint !== undefined && endpoint !== "") {
                 Qt.openUrlExternally(endpoint)
-                PageController.closePage()
-                PageController.closePage()
+                PageController.closePageRequired()
+                PageController.closePageRequired()
             } else {
-                PageController.showBusyIndicator(true)
+                PageController.showBusyIndicatorRequired(true)
                 InstallController.installServiceFromApi()
-                PageController.showBusyIndicator(false)
+                PageController.showBusyIndicatorRequired(false)
             }
         }
     }

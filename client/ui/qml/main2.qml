@@ -35,39 +35,39 @@ Window  {
     Connections {
         target: PageController
 
-        function onRaiseMainWindow() {
+        function onRaiseMainWindowRequired() {
             root.show()
             root.raise()
             root.requestActivate()
         }
 
-        function onHideMainWindow() {
+        function onHideMainWindowRequired() {
             root.hide()
         }
 
-        function onShowErrorMessage(errorMessage) {
+        function onShowErrorMessageRequired(errorMessage) {
             popupErrorMessage.text = errorMessage
             popupErrorMessage.open()
         }
 
-        function onShowNotificationMessage(message) {
+        function onShowNotificationMessageRequired(message) {
             popupNotificationMessage.text = message
             popupNotificationMessage.closeButtonVisible = false
             popupNotificationMessage.open()
             popupNotificationTimer.start()
         }
 
-        function onShowPassphraseRequestDrawer() {
+        function onShowPassphraseRequestDrawerRequired() {
             privateKeyPassphraseDrawer.open()
         }
 
-        function onGoToPageSettingsBackup() {
-            PageController.goToPage(PageEnum.PageSettingsBackup)
+        function onGoToPageSettingsBackupRequired() {
+            PageController.goToPageRequired(PageEnum.PageSettingsBackup)
         }
 
-        function onShowBusyIndicator(visible) {
+        function onShowBusyIndicatorRequired(visible) {
             busyIndicator.visible = visible
-            PageController.disableControls(visible)
+            PageController.disableControlsRequired(visible)
         }
     }
 
@@ -75,7 +75,7 @@ Window  {
         target: SettingsController
 
         function onChangeSettingsFinished(finishedMessage) {
-            PageController.showNotificationMessage(finishedMessage)
+            PageController.showNotificationMessageRequired(finishedMessage)
         }
     }
 
@@ -144,12 +144,12 @@ Window  {
 
                     function onAboutToHide() {
                         if (passphrase.textFieldText !== "") {
-                            PageController.showBusyIndicator(true)
+                            PageController.showBusyIndicatorRequired(true)
                         }
                     }
 
                     function onAboutToShow() {
-                        PageController.showBusyIndicator(false)
+                        PageController.showBusyIndicatorRequired(false)
                     }
                 }
 
@@ -186,7 +186,7 @@ Window  {
 
                     clickedFunc: function() {
                         privateKeyPassphraseDrawer.close()
-                        PageController.passphraseRequestDrawerClosed(passphrase.textFieldText)
+                        PageController.passphraseRequestDrawerCloseRequired(passphrase.textFieldText)
                     }
                 }
             }

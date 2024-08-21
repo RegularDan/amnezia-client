@@ -89,7 +89,7 @@ PageType {
 
                             onClicked: {
                                 ApiServicesModel.setServiceIndex(index)
-                                PageController.goToPage(PageEnum.PageSetupWizardApiServiceInfo)
+                                PageController.goToPageRequired(PageEnum.PageSetupWizardApiServiceInfo)
                             }
                         }
                     }
